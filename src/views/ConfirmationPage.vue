@@ -9,9 +9,9 @@
       <div class="price-container">Total: £{{totalPrice.toFixed(2)}}</div>
     </div>
     <div class="confirmation-buttons-container">
-      <div class="confirmation-button" @click="backToOrderPage">🔙 Back</div>
-      <div class="confirmation-button" @click="toggleResetOverlay">♻️ Reset</div>
-      <div class="confirmation-button" @click="print">📄 Print</div>
+      <div class="confirmation-button" @click="backToOrderPage">🔙Back</div>
+      <div class="confirmation-button" @click="toggleResetOverlay">♻️Reset</div>
+      <div class="confirmation-button" @click="placeOrder">✔️Place order</div>
     </div>
 
     <div class="reset-overlay-container" v-if="showResetOverlay">
@@ -45,8 +45,8 @@ export default {
     }
   },
   methods: {
-    print(){
-      window.print();
+    placeOrder(){
+      this.reset()
     },
     backToOrderPage(){
       this.$router.push({ path: 'order' })
