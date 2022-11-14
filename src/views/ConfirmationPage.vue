@@ -20,7 +20,7 @@
       </div>
       <div class="price-container">Total: £{{ totalPrice.toFixed(2) }}</div>
     </div>
-    <div class="confirmation-buttons-container">
+    <div class="confirmation-buttons-container no-print">
       <div class="confirmation-button" @click="backToOrderPage">🔙Back</div>
       <div class="confirmation-button" @click="toggleResetOverlay">♻️Reset</div>
       <div class="confirmation-button" @click="placeOrder">🖨️Print</div>
@@ -79,6 +79,12 @@ export default {
 
 <style lang="scss">
 @import "../css/global.scss";
+
+@media print {
+  .no-print {
+    visibility: hidden;
+  }
+}
 
 .confirmation-page-container {
   height: 100vh;
