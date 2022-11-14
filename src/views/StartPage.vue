@@ -1,5 +1,6 @@
 <template>
   <div class="start-page-container">
+    <span class="title">Sunshine Takeaway</span>
     <button class="start-button" @click="goToOrderPage">Start</button>
   </div>
 </template>
@@ -19,17 +20,27 @@ export default {
 @import "../css/global.scss";
 
 .start-page-container {
+  display: flex;
+  flex-direction: column;
   text-align: center;
   height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  font-size: 3em;
+  font-family: "Revue", Helvetica, Arial;
+  color: $red;
+  padding-bottom: 30px;
 }
 
 .start-button {
-  margin-top: 20%;
-  padding: 2% 10%;
   border-radius: 5px;
-  font-size: 3em;
-  background: #fff;
+  font-size: 2em;
+  background: $white;
   color: $black;
-  border: 2px solid black;
+  border: 2px solid $black;
+  width: 100px;
 }
 </style>

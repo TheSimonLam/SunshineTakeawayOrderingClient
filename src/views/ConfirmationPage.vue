@@ -1,5 +1,22 @@
 <template>
   <div class="confirmation-page-container">
+    <div class="reset-overlay-container" v-if="showResetOverlay">
+      <div class="overlay-background" @click="toggleResetOverlay"></div>
+      <div class="reset-overlay-wrapper">
+        <div>Are you sure you want to reset?</div>
+        <div class="overlay-buttons-container">
+          <button class="overlay-button overlay-button-yes" @click="reset">
+            Yes
+          </button>
+          <button
+            class="overlay-button overlay-button-no"
+            @click="toggleResetOverlay"
+          >
+            No
+          </button>
+        </div>
+      </div>
+    </div>
     <div class="ordered-items-container">
       <div
         class="item-container"
@@ -31,8 +48,15 @@
       <div class="reset-container">
         <div>Are you sure you want to reset?</div>
         <div class="overlay-buttons-container">
-          <button class="overlay-button" @click="reset">Yes</button>
-          <button class="overlay-button" @click="toggleResetOverlay">No</button>
+          <button class="overlay-button overlay-button-yes" @click="reset">
+            Yes
+          </button>
+          <button
+            class="overlay-button overlay-button-no"
+            @click="toggleResetOverlay"
+          >
+            No
+          </button>
         </div>
       </div>
     </div>
