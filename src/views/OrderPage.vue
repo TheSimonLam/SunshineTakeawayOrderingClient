@@ -30,6 +30,6 @@ export default {
 
 .order-page-container {
   text-align: center;
-  padding: 50px 10px 10px 10px;
+  padding: 10px 10px 10px 10px;
 }
 </style>
