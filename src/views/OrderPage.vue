@@ -33,6 +33,7 @@
     </div>
     <div class="order-page-container">
       <div class="categories-list-container">
+        <input class="search-bar-input" placeholder="Search..." />
         <template v-for="category in menu">
           <div
             class="categories-list-item"
@@ -115,10 +116,14 @@ export default {
 <style lang="scss">
 @import "../css/global.scss";
 
+.search-bar-input {
+  padding: 10px;
+  font-size: 1.8em;
+}
+
 .order-page-container {
   display: flex;
   flex-direction: row;
-  padding-bottom: 100px;
 }
 
 .category-items-container {
@@ -131,11 +136,14 @@ export default {
   display: flex;
   flex-direction: column;
   border-bottom: 1px solid black;
+  height: calc(100vh - 100px);
+  overflow-y: scroll;
 }
 
 .categories-list-item {
-  font-size: 2em;
+  font-size: 1.8em;
   border-bottom: 1px solid black;
+  padding: 5px;
 }
 
 .nav {
