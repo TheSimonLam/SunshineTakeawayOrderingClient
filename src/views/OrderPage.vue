@@ -117,7 +117,7 @@ export default {
 @import "../css/global.scss";
 
 .search-bar-input {
-  padding: 10px;
+  padding: 6px;
   font-size: 1.8em;
 }
 
@@ -132,6 +132,7 @@ export default {
 }
 
 .categories-list-container {
+  min-width: 280px;
   flex: 1;
   display: flex;
   flex-direction: column;
