@@ -1,9 +1,6 @@
 <template>
   <div>
-    <div class="category-container" @click="toggleShowItems">
-      {{ category.name }}
-    </div>
-    <div class="items-container" v-bind:class="{ expanded: showItems }">
+    <div class="items-container">
       <div
         class="item-square-container"
         @click="itemSelected(item, category.sideIncluded, $event)"
@@ -47,7 +44,6 @@ export default {
   props: ["category"],
   data: function() {
     return {
-      showItems: false,
       showSideOverlay: false,
       currentlySelectedItem: {},
     };
@@ -58,9 +54,6 @@ export default {
     },
   },
   methods: {
-    toggleShowItems() {
-      this.showItems = !this.showItems;
-    },
     itemSelected(item, sideIncluded, e) {
       let mutableItem = JSON.parse(JSON.stringify(item)); //Stupid hack for deepcloning an object
       if (sideIncluded && !mutableItem.dontIncludeSideOverride) {
@@ -133,12 +126,6 @@ export default {
   border: 2px solid black;
 }
 
-.expanded {
-  max-height: 1170px !important;
-  border: 2px solid black;
-  border-top: none;
-}
-
 .item-square-container {
   height: 150px;
   width: 100px;
@@ -182,10 +169,6 @@ export default {
 
 .items-container {
   background: $white;
-  max-height: 0;
-  overflow: hidden;
-  overflow-y: hidden;
-  transition: max-height 0.2s linear;
 }
 
 .side-overlay-container {

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div id="nav">
+    <div class="nav">
       <div class="nav-button reset-container" @click="toggleResetOverlay">
         Reset
       </div>
@@ -32,12 +32,25 @@
       </div>
     </div>
     <div class="order-page-container">
-      <Category
-        class="item-type-container"
-        v-for="category in menu"
-        v-bind:key="category.name"
-        :category="category"
-      ></Category>
+      <div class="categories-list-container">
+        <template v-for="category in menu">
+          <div
+            class="categories-list-item"
+            :style="{
+              'border-right':
+                selectedCategoryName === category.name
+                  ? 'none'
+                  : '1px solid black',
+            }"
+            @click="setCategory(category.name)"
+          >
+            {{ category.name }}
+          </div>
+        </template>
+      </div>
+      <div class="category-items-container">
+        <Category :category="getSelectedCategory" />
+      </div>
     </div>
   </div>
 </template>
@@ -60,10 +73,19 @@ export default {
     orderItemCount() {
       return this.$store.getters.getOrder.length;
     },
+    getSelectedCategory() {
+      if (this.selectedCategoryName === "") return {};
+      const menu = this.$store.getters.getMenu;
+      return menu.filter(
+        (categoryItem) => categoryItem.name === this.selectedCategoryName
+      )[0];
+    },
   },
   data() {
     return {
       showResetOverlay: false,
+      selectedCategoryName: "",
+      selectedCategoryItem: undefined,
     };
   },
   methods: {
@@ -83,6 +105,9 @@ export default {
       this.$store.commit("resetOrder");
       this.$router.push({ path: "/" });
     },
+    setCategory(chosenCategory) {
+      this.selectedCategoryName = chosenCategory;
+    },
   },
 };
 </script>
@@ -91,11 +116,29 @@ export default {
 @import "../css/global.scss";
 
 .order-page-container {
-  text-align: center;
-  padding: 10px 10px 110px 10px;
+  display: flex;
+  flex-direction: row;
+  padding-bottom: 100px;
 }
 
-#nav {
+.category-items-container {
+  display: flex;
+  flex: 4;
+}
+
+.categories-list-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid black;
+}
+
+.categories-list-item {
+  font-size: 2em;
+  border-bottom: 1px solid black;
+}
+
+.nav {
   background-color: white;
   position: fixed;
   z-index: 99;
