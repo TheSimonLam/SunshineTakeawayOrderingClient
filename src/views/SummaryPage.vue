@@ -1,5 +1,16 @@
 <template>
   <div class="confirmation-page-container">
+    <div class="summary-page-nav">
+      <div
+        class="summary-page-nav-button back-container"
+        @click="backToOrderPage"
+      >
+        Back
+      </div>
+      <div class="summary-page-nav-button print-container" @click="placeOrder">
+        🖨️Print
+      </div>
+    </div>
     <div class="reset-overlay-container" v-if="showResetOverlay">
       <div class="overlay-background" @click="toggleResetOverlay"></div>
       <div class="reset-overlay-wrapper">
@@ -37,12 +48,6 @@
       </div>
       <div class="price-container">Total: £{{ totalPrice.toFixed(2) }}</div>
     </div>
-    <div class="confirmation-buttons-container no-print">
-      <div class="confirmation-button" @click="backToOrderPage">🔙Back</div>
-      <div class="confirmation-button" @click="toggleResetOverlay">♻️Reset</div>
-      <div class="confirmation-button" @click="placeOrder">🖨️Print</div>
-    </div>
-
     <div class="reset-overlay-container" v-if="showResetOverlay">
       <div class="overlay-background" @click="toggleResetOverlay"></div>
       <div class="reset-container">
@@ -166,5 +171,39 @@ export default {
   margin-bottom: 0;
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;
+}
+
+.summary-page-nav {
+  background-color: white;
+  position: fixed;
+  z-index: 99;
+  bottom: 0;
+  display: flex;
+  font-size: 1.5em;
+  text-align: center;
+  width: 100%;
+  height: 100px;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.summary-page-nav-button {
+  padding: 10px;
+  height: 40px;
+  width: 30%;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.print-container {
+  background-color: $green;
+}
+
+.back-container {
+  background-color: $white;
+  border: 2px solid $yellow;
 }
 </style>

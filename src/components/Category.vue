@@ -40,7 +40,7 @@
 import uuid from "uuidv4";
 
 export default {
-  name: "items",
+  name: "category",
   props: ["items"],
   data: function() {
     return {

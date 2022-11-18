@@ -1,36 +1,20 @@
 <template>
   <div>
-    <div class="nav">
-      <div class="nav-button reset-container" @click="toggleResetOverlay">
+    <div class="order-page-nav">
+      <div class="order-page-nav-button reset-container" @click="toggleResetOverlay">
         Reset
       </div>
-      <div class="nav-button undo-container" @click="undoLastItemAdded">
+      <div class="order-page-nav-button undo-container" @click="undoLastItemAdded">
         Undo
       </div>
-      <div class="nav-button next-container" @click="goToConfirmationPage">
+      <div class="order-page-nav-button next-container" @click="goToConfirmationPage">
         Summary (£{{ totalPrice.toFixed(2) }})
       </div>
     </div>
     <div id="item-added-message" class="item-added-message-container">
       Item added!
     </div>
-    <div class="reset-overlay-container" v-if="showResetOverlay">
-      <div class="overlay-background" @click="toggleResetOverlay"></div>
-      <div class="reset-overlay-wrapper">
-        <div>Are you sure you want to reset?</div>
-        <div class="overlay-buttons-container">
-          <button class="overlay-button overlay-button-yes" @click="reset">
-            Yes
-          </button>
-          <button
-            class="overlay-button overlay-button-no"
-            @click="toggleResetOverlay"
-          >
-            No
-          </button>
-        </div>
-      </div>
-    </div>
+    <ResetOverlay v-if="showResetOverlay" @toggleResetOverlay="toggleResetOverlay"></ResetOverlay>
     <div class="order-page-container">
       <div class="categories-list-container">
         <input
@@ -68,12 +52,14 @@
 
 <script>
 import Category from "../components/Category";
+import ResetOverlay from "../components/ResetOverlay.vue";
 
 export default {
   name: "order",
   components: {
     Category,
-  },
+    ResetOverlay
+},
   computed: {
     menu() {
       return this.$store.getters.getMenu;
@@ -190,7 +176,7 @@ export default {
   padding: 5px;
 }
 
-.nav {
+.order-page-nav {
   background-color: white;
   position: fixed;
   z-index: 99;
@@ -202,10 +188,9 @@ export default {
   height: 100px;
   align-items: center;
   justify-content: space-around;
-  border-top: 1px solid $black;
 }
 
-.nav-button {
+.order-page-nav-button {
   padding: 10px;
   height: 40px;
   width: 30%;
@@ -248,41 +233,12 @@ export default {
   opacity: 1;
 }
 
-.reset-overlay-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  text-align: center;
-}
-
 .overlay-background {
   background: black;
   height: 100%;
   width: 100%;
   opacity: 0.5;
   position: absolute;
-}
-
-.reset-overlay-wrapper {
-  border: 1px solid black;
-  display: inline-block;
-  background: #fff;
-  width: 290px;
-  height: 25vh;
-  border-radius: 5px;
-  padding: 40px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: auto;
-  font-size: 1.7em;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
 }
 
 .overlay-buttons-container {
