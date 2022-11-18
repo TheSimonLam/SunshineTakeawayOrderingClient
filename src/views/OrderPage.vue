@@ -281,7 +281,7 @@ export default {
 
 .overlay-button {
   width: 120px;
-  font-size: 1em;
+  font-size: 0.8em;
   border: none;
   border-radius: 5px;
 }
