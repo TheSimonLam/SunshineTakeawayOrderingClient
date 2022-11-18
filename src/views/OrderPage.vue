@@ -8,7 +8,7 @@
         Undo
       </div>
       <div class="nav-button next-container" @click="goToConfirmationPage">
-        Next (£{{ totalPrice.toFixed(2) }})
+        Summary (£{{ totalPrice.toFixed(2) }})
       </div>
     </div>
     <div id="item-added-message" class="item-added-message-container">
@@ -42,6 +42,11 @@
         <template v-for="category in menu">
           <div
             class="categories-list-item"
+            :class="
+              selectedCategoryName === category.name
+                ? 'light-grey-background'
+                : 'faded-background'
+            "
             :style="{
               'border-right':
                 selectedCategoryName === category.name
@@ -55,7 +60,7 @@
         </template>
       </div>
       <div class="category-items-container">
-        <Category :category="getSelectedCategory" />
+        <Category :items="searchTerm ? searchResults : getSelectedCategory" />
       </div>
     </div>
   </div>
@@ -84,7 +89,7 @@ export default {
       const menu = this.$store.getters.getMenu;
       return menu.filter(
         (categoryItem) => categoryItem.name === this.selectedCategoryName
-      )[0];
+      )[0].items;
     },
   },
   data() {
@@ -133,7 +138,6 @@ export default {
         });
       });
       this.searchResults = results;
-      //TODO: Need to be able to handle sides before passing into Category.vue
     },
   },
 };
@@ -141,6 +145,14 @@ export default {
 
 <style lang="scss">
 @import "../css/global.scss";
+
+.faded-background {
+  background: linear-gradient($white, $darkGrey);
+}
+
+.light-grey-background {
+  background-color: $lightGrey;
+}
 
 .search-bar-input {
   padding: 6px;
@@ -155,6 +167,7 @@ export default {
 .category-items-container {
   display: flex;
   flex: 4;
+  background-color: $lightGrey;
 }
 
 .categories-list-container {
@@ -165,6 +178,10 @@ export default {
   border-bottom: 1px solid black;
   height: calc(100vh - 100px);
   overflow-y: scroll;
+}
+
+.categories-list-container::-webkit-scrollbar {
+  display: none;
 }
 
 .categories-list-item {

@@ -3,9 +3,9 @@
     <div class="items-container">
       <div
         class="item-square-container"
-        @click="itemSelected(item, category.sideIncluded, $event)"
-        v-for="item in category.items"
-        v-bind:key="item.id"
+        @click="itemSelected(item, $event)"
+        v-for="item in items"
+        v-bind:key="item.name"
       >
         <div class="item-emoji" v-if="generateEmoji(item.name)">
           {{ generateEmoji(item.name) }}
@@ -22,11 +22,11 @@
       <div class="side-container">
         <div>Choose a side:</div>
         <div class="side-overlay-buttons-container">
-          <div v-for="mealSide in mealSides" v-bind:key="mealSide.id">
+          <template v-for="mealSide in mealSides">
             <button class="side-overlay-button" @click="sideChosen(mealSide)">
               {{ mealSide.name }}
             </button>
-          </div>
+          </template>
           <button class="side-overlay-button" @click="sideChosen()">
             None
           </button>
@@ -40,8 +40,8 @@
 import uuid from "uuidv4";
 
 export default {
-  name: "category",
-  props: ["category"],
+  name: "items",
+  props: ["items"],
   data: function() {
     return {
       showSideOverlay: false,
@@ -54,7 +54,8 @@ export default {
     },
   },
   methods: {
-    itemSelected(item, sideIncluded, e) {
+    itemSelected(item, e) {
+      const sideIncluded = item.sideIncluded;
       let mutableItem = JSON.parse(JSON.stringify(item)); //Stupid hack for deepcloning an object
       if (sideIncluded && !mutableItem.dontIncludeSideOverride) {
         //the override's for vegetarian chow mein
@@ -129,15 +130,15 @@ export default {
 .item-square-container {
   height: 150px;
   width: 100px;
-  background: $yellow;
+  background: $white;
   margin: 10px;
   display: inline-block;
   padding: 10px;
   text-align: left;
   border-radius: 5px;
   vertical-align: top;
-  border: 2px solid black;
   position: relative;
+  box-shadow: 3px 3px 5px 6px #ccc;
 }
 
 .item {
@@ -151,7 +152,7 @@ export default {
   position: absolute;
   top: 0;
   right: 0;
-  font-size: 2.5em;
+  font-size: 1.5em;
 }
 
 .item-name {
@@ -168,7 +169,6 @@ export default {
 }
 
 .items-container {
-  background: $white;
 }
 
 .side-overlay-container {
@@ -189,11 +189,10 @@ export default {
 }
 
 .side-container {
-  border: 2px solid black;
   display: inline-block;
   background: #fff;
   width: 40%;
-  height: 35vh;
+  height: 20vh;
   border-radius: 5px;
   padding: 40px;
   position: absolute;
@@ -206,14 +205,20 @@ export default {
 }
 
 .side-overlay-buttons-container {
+  display: flex;
   margin-top: 10px;
 }
 
 .side-overlay-button {
+  border: none;
   font-size: 1em;
-  border: 2px solid black;
   margin: 15px;
-  background: #90ccf4;
+  background: $yellow;
+  padding: 10px;
+  justify-content: center;
+  display: flex;
+  align-items: center;
   border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 </style>
