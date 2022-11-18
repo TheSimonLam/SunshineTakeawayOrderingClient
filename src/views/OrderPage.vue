@@ -33,7 +33,12 @@
     </div>
     <div class="order-page-container">
       <div class="categories-list-container">
-        <input class="search-bar-input" placeholder="Search..." />
+        <input
+          class="search-bar-input"
+          placeholder="Search..."
+          v-model="searchTerm"
+          @keyup="setSearchTerm"
+        />
         <template v-for="category in menu">
           <div
             class="categories-list-item"
@@ -87,6 +92,8 @@ export default {
       showResetOverlay: false,
       selectedCategoryName: "",
       selectedCategoryItem: undefined,
+      searchTerm: "",
+      searchResults: undefined,
     };
   },
   methods: {
@@ -108,6 +115,25 @@ export default {
     },
     setCategory(chosenCategory) {
       this.selectedCategoryName = chosenCategory;
+      this.searchTerm = "";
+      this.searchResults = "";
+    },
+    setSearchTerm() {
+      this.selectedCategoryName = "";
+      const menu = this.$store.getters.getMenu;
+      const results = [];
+      menu.forEach((categoryItem) => {
+        categoryItem.items.forEach((item) => {
+          if (
+            item.id.toString().includes(this.searchTerm) ||
+            item.name.toLowerCase().includes(this.searchTerm.toLowerCase())
+          ) {
+            results.push(item);
+          }
+        });
+      });
+      this.searchResults = results;
+      //TODO: Need to be able to handle sides before passing into Category.vue
     },
   },
 };
