@@ -1,20 +1,36 @@
 <template>
   <div>
     <div class="order-page-nav">
-      <div class="order-page-nav-button reset-container" @click="toggleResetOverlay">
+      <div
+        class="order-page-nav-button reset-container"
+        @click="toggleResetOverlay"
+      >
         Reset
       </div>
-      <div class="order-page-nav-button undo-container" @click="undoLastItemAdded">
+      <div
+        class="order-page-nav-button undo-container"
+        @click="undoLastItemAdded"
+      >
         Undo
       </div>
-      <div class="order-page-nav-button next-container" @click="goToConfirmationPage">
+      <div
+        class="order-page-nav-button next-container"
+        @click="goToConfirmationPage"
+      >
         Summary (£{{ totalPrice.toFixed(2) }})
       </div>
     </div>
     <div id="item-added-message" class="item-added-message-container">
       Item added!
     </div>
-    <ResetOverlay v-if="showResetOverlay" @toggleResetOverlay="toggleResetOverlay"></ResetOverlay>
+    <ResetOverlay
+      v-if="showResetOverlay"
+      @toggleResetOverlay="toggleResetOverlay"
+    ></ResetOverlay>
+    <CustomItemOverlay
+      v-if="showCustomItemOverlay"
+      @toggleCustomItemOverlay="toggleCustomItemOverlay"
+    ></CustomItemOverlay>
     <div class="order-page-container">
       <div class="categories-list-container">
         <input
@@ -23,20 +39,18 @@
           v-model="searchTerm"
           @keyup="setSearchTerm"
         />
+        <div
+          class="categories-list-item custom-item-button"
+          @click="toggleCustomItemOverlay()"
+        >
+          Custom Item
+        </div>
         <template v-for="category in menu">
           <div
             class="categories-list-item"
             :class="
-              selectedCategoryName === category.name
-                ? 'light-grey-background'
-                : 'faded-background'
+              selectedCategoryName === category.name ? 'selected-category' : ''
             "
-            :style="{
-              'border-right':
-                selectedCategoryName === category.name
-                  ? 'none'
-                  : '1px solid black',
-            }"
             @click="setCategory(category.name)"
           >
             {{ category.name }}
@@ -52,14 +66,16 @@
 
 <script>
 import Category from "../components/Category";
+import CustomItemOverlay from "../components/CustomItemOverlay";
 import ResetOverlay from "../components/ResetOverlay.vue";
 
 export default {
   name: "order",
   components: {
     Category,
-    ResetOverlay
-},
+    ResetOverlay,
+    CustomItemOverlay,
+  },
   computed: {
     menu() {
       return this.$store.getters.getMenu;
@@ -81,6 +97,7 @@ export default {
   data() {
     return {
       showResetOverlay: false,
+      showCustomItemOverlay: false,
       selectedCategoryName: "",
       selectedCategoryItem: undefined,
       searchTerm: "",
@@ -98,6 +115,9 @@ export default {
     },
     toggleResetOverlay() {
       this.showResetOverlay = !this.showResetOverlay;
+    },
+    toggleCustomItemOverlay() {
+      this.showCustomItemOverlay = !this.showCustomItemOverlay;
     },
     reset() {
       this.toggleResetOverlay();
@@ -132,12 +152,12 @@ export default {
 <style lang="scss">
 @import "../css/global.scss";
 
-.faded-background {
-  background: linear-gradient($white, $darkGrey);
+.custom-item-button {
+  background-color: $yellow;
 }
 
-.light-grey-background {
-  background-color: $lightGrey;
+.selected-category {
+  border-right: 10px solid $red;
 }
 
 .search-bar-input {

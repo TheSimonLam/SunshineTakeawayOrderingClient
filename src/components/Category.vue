@@ -7,10 +7,12 @@
         v-for="item in items"
         v-bind:key="item.name"
       >
-        <div class="item-emoji" v-if="generateEmoji(item.name)">
-          {{ generateEmoji(item.name) }}
+        <div class="item-top-row">
+          <div class="item item-id">{{ item.id }}</div>
+          <div class="item-emoji" v-if="generateEmoji(item.name)">
+            {{ generateEmoji(item.name) }}
+          </div>
         </div>
-        <div class="item item-id">{{ item.id }}</div>
         <div class="item item-name">{{ item.name }}</div>
         <div class="item item-price">£{{ item.price.toFixed(2) }}</div>
         <div class="item item-allergens">{{ item.allergens }}</div>
@@ -128,6 +130,7 @@ export default {
 }
 
 .item-square-container {
+  display: flex;
   height: 150px;
   width: 100px;
   background: $white;
@@ -137,8 +140,12 @@ export default {
   text-align: left;
   border-radius: 5px;
   vertical-align: top;
-  position: relative;
   box-shadow: 3px 3px 5px 6px #ccc;
+}
+
+.item-top-row{
+  display: flex;
+  justify-content: space-between;
 }
 
 .item {
@@ -149,9 +156,6 @@ export default {
 }
 
 .item-emoji {
-  position: absolute;
-  top: 0;
-  right: 0;
   font-size: 1.5em;
 }
 
