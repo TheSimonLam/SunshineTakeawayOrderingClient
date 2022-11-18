@@ -1,6 +1,6 @@
 <template>
   <div class="confirmation-page-container">
-    <div class="summary-page-nav">
+    <div class="summary-page-nav no-print">
       <div
         class="summary-page-nav-button back-container"
         @click="backToOrderPage"
