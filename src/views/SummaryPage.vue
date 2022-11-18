@@ -29,14 +29,13 @@
       </div>
     </div>
     <div class="ordered-items-container">
-      <div
-        class="item-container"
-        @click="removeItem(item)"
-        v-for="item in order"
-        v-bind:key="item.id"
-      >
-        <div class="ordered-item ordered-item-name">
+      <div class="item-container" v-for="item in order" v-bind:key="item.id">
+        <span class="delete-icon no-print" @click="removeItem(item)">✖</span>
+        <div v-if="item.id" class="ordered-item ordered-item-name">
           {{ item.id }}. {{ item.name }}
+        </div>
+        <div v-else="type === 'B'" class="ordered-item ordered-item-name">
+          {{ item.name }}
         </div>
         <div class="ordered-item ordered-item-name" v-if="item.side">
           with {{ item.side.name }}
@@ -47,6 +46,10 @@
         </div>
       </div>
       <div class="price-container">Total: £{{ totalPrice.toFixed(2) }}</div>
+      <div class="name-container">
+        Name:
+        <input class="customer-name-input" placeholder="customer name..." />
+      </div>
     </div>
     <div class="reset-overlay-container" v-if="showResetOverlay">
       <div class="overlay-background" @click="toggleResetOverlay"></div>
@@ -115,18 +118,29 @@ export default {
   }
 }
 
+.customer-name-input {
+  padding: 5px;
+  border: none;
+  text-decoration: underline;
+  font-size: 1em;
+}
+
+.delete-icon {
+  color: $red;
+  padding-right: 10px;
+}
+
 .confirmation-page-container {
-  height: 100vh;
-  padding-top: 100px;
+  padding-top: 50px;
+  background: $pureWhite;
 }
 
 .ordered-items-container {
   font-size: 1.3em;
-  background: white;
+  background: $pureWhite;
   border-radius: 5px;
   margin: 0 50px;
   padding: 10px;
-  border: 2px solid black;
 }
 
 .item-container {
@@ -144,7 +158,8 @@ export default {
 .ordered-item-price {
 }
 
-.price-container {
+.price-container,
+.name-container {
   font-size: 1em;
   padding-top: 20px;
   font-weight: bold;
