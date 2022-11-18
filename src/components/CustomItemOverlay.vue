@@ -5,8 +5,26 @@
       @click="$emit('toggleCustomItemOverlay')"
     ></div>
     <div class="custom-item-overlay-wrapper">
+      <div class="input-row-container">
+        <textarea
+          v-model="itemDesc"
+          rows="10"
+          class="custom-item-input"
+          placeholder="Description"
+        />
+      </div>
+      <div class="input-row-container">
+        <input
+          class="custom-item-input"
+          v-model="itemPrice"
+          placeholder="Price"
+        />
+      </div>
       <div class="overlay-buttons-container">
-        <button class="overlay-button add-item-overlay-button-yes" @click="addToOrder">
+        <button
+          class="overlay-button add-item-overlay-button-yes"
+          @click="addToOrder"
+        >
           Add
         </button>
         <button
@@ -19,20 +37,26 @@
     </div>
   </div>
 </template>
-
 <script>
 export default {
   name: "custom-item-overlay",
   data: function() {
     return {
-      currentlySelectedItem: {},
+      itemDesc: "",
+      itemPrice: "",
     };
   },
   methods: {
-    addToOrder(item, e) {
-      this.currentlySelectedItem = {};
-      item.uuid = uuid();
-      this.$store.commit("addItemToOrder", item);
+    addToOrder() {
+      if (this.itemDesc !== "" && !isNaN(parseInt(this.itemPrice))) {
+        this.$store.commit("addItemToOrder", {
+          id: "-",
+          price: parseInt(this.itemPrice),
+          name: this.itemDesc,
+        });
+        this.itemDesc = "";
+        this.itemPrice = "";
+      }
     },
   },
 };
@@ -40,6 +64,10 @@ export default {
 
 <style lang="scss">
 @import "../css/global.scss";
+
+.custom-item-input {
+  padding: 10px;
+}
 
 .custom-item-overlay-container {
   position: fixed;
@@ -70,7 +98,7 @@ export default {
   justify-content: space-around;
 }
 
-.add-item-overlay-button-yes{
+.add-item-overlay-button-yes {
   background-color: $yellow;
 }
 </style>
