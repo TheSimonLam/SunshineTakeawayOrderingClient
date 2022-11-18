@@ -2,7 +2,7 @@
 
 TODO:
 
-1. Est. time for cooking
-2. Out of stock control
+1. Est. time for cooking (might be too hard)
+2. Out of stock control (might be too hard)
 3. Drinks
 4. Sauces

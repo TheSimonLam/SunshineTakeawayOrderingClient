@@ -40,6 +40,7 @@
 
 <script>
 import uuid from "uuidv4";
+import { COST_FOR_FRIED_RICE_SIDE, AMOUNT_TO_DEDUCT_WHEN_NO_SIDE_SELECTED } from "../consts";
 
 export default {
   name: "category",
@@ -96,7 +97,10 @@ export default {
       this.currentlySelectedItem.side = side;
 
       if (side && side.id === 313) {
-        this.currentlySelectedItem.price = this.currentlySelectedItem.price += 0.5;
+        this.currentlySelectedItem.price = this.currentlySelectedItem.price += COST_FOR_FRIED_RICE_SIDE;
+      }
+      else if(!side){
+        this.currentlySelectedItem.price = this.currentlySelectedItem.price -= AMOUNT_TO_DEDUCT_WHEN_NO_SIDE_SELECTED;
       }
       this.addToOrder(this.currentlySelectedItem);
       this.toggleSideOverlay();
