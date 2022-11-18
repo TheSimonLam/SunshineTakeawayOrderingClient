@@ -21,7 +21,7 @@ export default new Router({
     {
       path: "/confirm",
       name: "comfirm",
-      component: () => import("./views/ConfirmationPage.vue"),
+      component: () => import("./views/SummaryPage.vue"),
     },
   ],
 });
