@@ -29,7 +29,7 @@
       </div>
     </div>
     <div class="ordered-items-container">
-      <div class="item-container" v-for="item in order" v-bind:key="item.id">
+      <div class="item-container" v-for="item in order">
         <span class="delete-icon no-print" @click="removeItem(item)">✖</span>
         <div v-if="item.id" class="ordered-item ordered-item-name">
           {{ item.id }}. {{ item.name }}
@@ -49,6 +49,10 @@
       <div class="name-container">
         Name:
         <input class="customer-name-input" placeholder="customer name..." />
+      </div>
+      <div class="time-container">
+        Time:
+        <input class="time-input" placeholder="arrival time..." />
       </div>
     </div>
     <div class="reset-overlay-container" v-if="showResetOverlay">
@@ -125,6 +129,13 @@ export default {
   font-size: 1em;
 }
 
+.time-input {
+  padding: 5px;
+  border: none;
+  text-decoration: underline;
+  font-size: 1em;
+}
+
 .delete-icon {
   color: $red;
   padding-right: 10px;
@@ -144,7 +155,7 @@ export default {
 }
 
 .item-container {
-  padding-bottom: 10px;
+  padding-bottom: 30px;
 }
 
 .ordered-item {
@@ -159,7 +170,8 @@ export default {
 }
 
 .price-container,
-.name-container {
+.name-container,
+.time-container {
   font-size: 1em;
   padding-top: 20px;
   font-weight: bold;
