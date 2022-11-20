@@ -1062,4 +1062,57 @@ export default [
       },
     ],
   },
+  {
+    hidden: true,
+    description:
+      "A hidden menu for listing alternatives to rice/chips when choosing a dish",
+    name: "Instead of rice or chips",
+    items: [
+      {
+        id: 1,
+        name: "Fried rice",
+        price: 0.5,
+      },
+      {
+        id: 2,
+        name: "Boiled rice",
+        price: 0,
+      },
+      {
+        id: 3,
+        name: "Small chips",
+        price: 0,
+      },
+      {
+        id: 4,
+        name: "Large chips",
+        price: 0,
+      },
+      {
+        id: 5,
+        name: "Noodles & Beansprouts",
+        price: 0,
+      },
+      {
+        id: 6,
+        name: "Noodles",
+        price: 0,
+      },
+      {
+        id: 7,
+        name: "Half boiled rice half chips",
+        price: 0,
+      },
+      {
+        id: 8,
+        name: "Salt and pepper chips",
+        price: 0,
+      },
+      {
+        id: 9,
+        name: "None",
+        price: 0,
+      },
+    ],
+  },
 ];

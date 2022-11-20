@@ -6,18 +6,12 @@ Vue.use(Vuex);
 
 function initSideOrders() {
   for (let category of menu) {
-    if (category.name === "Starters, Sides & Extras") {
+    if (category.name === "Instead of rice or chips") {
       let mealSides = [];
 
       for (let side of category.items) {
-        if (side.id === 312 || side.id === 313) {
-          //Boiled rice and Fried rice
-          mealSides.push(side);
-        }
+        mealSides.push(side);
       }
-
-      mealSides.push({ name: "Small Chips" });
-
       return mealSides;
     }
   }

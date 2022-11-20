@@ -29,9 +29,6 @@
               {{ mealSide.name }}
             </button>
           </template>
-          <button class="side-overlay-button" @click="sideChosen()">
-            None
-          </button>
         </div>
       </div>
     </div>
@@ -40,7 +37,7 @@
 
 <script>
 import uuid from "uuidv4";
-import { COST_FOR_FRIED_RICE_SIDE, AMOUNT_TO_DEDUCT_WHEN_NO_SIDE_SELECTED } from "../consts";
+import { AMOUNT_TO_DEDUCT_WHEN_NO_SIDE_SELECTED } from "../consts";
 
 export default {
   name: "category",
@@ -96,12 +93,13 @@ export default {
     sideChosen(side) {
       this.currentlySelectedItem.side = side;
 
-      if (side && side.id === 313) {
-        this.currentlySelectedItem.price = this.currentlySelectedItem.price += COST_FOR_FRIED_RICE_SIDE;
-      }
-      else if(!side){
+      if (!side) {
         this.currentlySelectedItem.price = this.currentlySelectedItem.price -= AMOUNT_TO_DEDUCT_WHEN_NO_SIDE_SELECTED;
+      } else {
+        this.currentlySelectedItem.price = this.currentlySelectedItem.price +=
+          side.price;
       }
+
       this.addToOrder(this.currentlySelectedItem);
       this.toggleSideOverlay();
     },
@@ -147,7 +145,7 @@ export default {
   box-shadow: 3px 3px 5px 6px #ccc;
 }
 
-.item-top-row{
+.item-top-row {
   display: flex;
   justify-content: space-between;
 }
@@ -200,7 +198,7 @@ export default {
   display: inline-block;
   background: #fff;
   width: 40%;
-  height: 20vh;
+  height: 60vh;
   border-radius: 5px;
   padding: 40px;
   position: absolute;
@@ -215,6 +213,7 @@ export default {
 .side-overlay-buttons-container {
   display: flex;
   margin-top: 10px;
+  flex-wrap: wrap;
 }
 
 .side-overlay-button {

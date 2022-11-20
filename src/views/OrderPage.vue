@@ -47,6 +47,7 @@
         </div>
         <template v-for="category in menu">
           <div
+            v-if="!category.hidden"
             class="categories-list-item"
             :class="
               selectedCategoryName === category.name ? 'selected-category' : ''
