@@ -1,16 +1,5 @@
 <template>
   <div class="confirmation-page-container">
-    <div class="summary-page-nav no-print">
-      <div
-        class="summary-page-nav-button back-container"
-        @click="backToOrderPage"
-      >
-        Back
-      </div>
-      <div class="summary-page-nav-button print-container" @click="placeOrder">
-        🖨️Print
-      </div>
-    </div>
     <div class="reset-overlay-container" v-if="showResetOverlay">
       <div class="overlay-background" @click="toggleResetOverlay"></div>
       <div class="reset-overlay-wrapper">
@@ -29,8 +18,11 @@
       </div>
     </div>
     <div class="ordered-items-container">
+      <div v-if="printerError" class="printer-error-container">
+        Printer error: {{ printerError }}
+      </div>
       <div class="item-container" v-for="item in order">
-        <span class="delete-icon no-print" @click="removeItem(item)">✖</span>
+        <span class="delete-icon" @click="removeItem(item)">✖</span>
         <div v-if="item.id" class="ordered-item ordered-item-name">
           {{ item.id }}. {{ item.name }}
         </div>
@@ -72,10 +64,27 @@
         </div>
       </div>
     </div>
+    <div class="summary-page-nav">
+      <div
+        class="summary-page-nav-button back-container"
+        @click="backToOrderPage"
+      >
+        Back
+      </div>
+      <div
+        class="summary-page-nav-button print-container"
+        @click="placeOrder"
+        :class="isPrinting ? 'is-printing' : ''"
+      >
+        🖨️Print
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+import { printEscPos } from "../api/services";
+
 export default {
   name: "confirm",
   computed: {
@@ -89,11 +98,22 @@ export default {
   data() {
     return {
       showResetOverlay: false,
+      isPrinting: false,
+      printerError: "",
     };
   },
   methods: {
     placeOrder() {
-      window.print();
+      if (!this.isPrinting) {
+        this.isPrinting = true;
+        printEscPos(this.order).then((res) => {
+          if (res.status !== "success") {
+            this.printerError = "Printer error! Make sure server is running";
+          } else {
+            this.isPrinting = false;
+          }
+        });
+      }
     },
     backToOrderPage() {
       this.$router.push({ path: "order" });
@@ -115,12 +135,6 @@ export default {
 
 <style lang="scss">
 @import "../css/global.scss";
-
-@media print {
-  .no-print {
-    visibility: hidden;
-  }
-}
 
 .customer-name-input {
   padding: 5px;
@@ -232,5 +246,18 @@ export default {
 .back-container {
   background-color: $white;
   border: 2px solid $yellow;
+}
+
+.printer-error-container {
+  text-align: center;
+  background: $red;
+  width: 50%;
+  margin: 0 auto;
+  color: $white;
+  padding: 20px;
+}
+
+.is-printing {
+  background-color: $lightGrey;
 }
 </style>

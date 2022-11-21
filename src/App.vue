@@ -22,4 +22,8 @@ export default {
   font-family: "Roboto", sans-serif;
   background: $white;
 }
+
+.button-disabled{
+  background-color: $lightGrey;
+}
 </style>
