@@ -26,23 +26,7 @@ http.listen(port, () => {
 });
 
 const print = (body) => {
-  // Body looks like this:
-  // [
-  //   {
-  //     id: 112,
-  //     name: 'Chicken Chow Mein',
-  //     price: 6.5,
-  //     sideIncluded: false,
-  //     uuid: '623854da-2f73-4b9c-a840-487904aac0bc'
-  //   },
-  //   {
-  //     id: 114,
-  //     name: 'Char Siu Chow Mein',
-  //     price: 6.6,
-  //     sideIncluded: false,
-  //     uuid: '2727ea83-8f13-4769-be82-8283d4be6a28'
-  //   }
-  // ]
+  const { orderLines, customerName, totalPrice, arrivalTime } = body;
 
   device.open(function() {
     printer
@@ -50,8 +34,29 @@ const print = (body) => {
       .align("ct")
       .style("bu")
       .size(1, 1)
-      .text('this is a test')
-      // .cut()
+      .text("Sunshine Takeaway")
+      .newLine()
+      .size(1, 1)
+      .align("lt")
+      .text("Est. Time: " + arrivalTime)
+      .size(0.5, 0.5)
+      .newLine();
+
+    orderLines.forEach((orderLine) => {
+      printer.text(orderLine).newLine();
+    });
+
+    printer
+      .newLine()
+      .size(1, 1)
+      .text("Price: " + totalPrice)
+      .newLine()
+      .text("Name: " + customerName)
+      .newLine()
+      .newLine()
+      .cut()
       .close();
+
+    device.close();
   });
 };

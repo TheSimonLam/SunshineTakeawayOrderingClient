@@ -40,11 +40,19 @@
       <div class="price-container">Total: £{{ totalPrice.toFixed(2) }}</div>
       <div class="name-container">
         Name:
-        <input class="customer-name-input" placeholder="customer name..." />
+        <input
+          class="customer-name-input"
+          placeholder="customer name..."
+          v-model="customerName"
+        />
       </div>
       <div class="time-container">
         Time:
-        <input class="time-input" placeholder="arrival time..." />
+        <input
+          class="time-input"
+          placeholder="arrival time..."
+          v-model="arrivalTime"
+        />
       </div>
     </div>
     <div class="reset-overlay-container" v-if="showResetOverlay">
@@ -100,14 +108,21 @@ export default {
       showResetOverlay: false,
       isPrinting: false,
       printerError: "",
+      customerName: "",
+      arrivalTime: "",
     };
   },
   methods: {
     placeOrder() {
       if (!this.isPrinting) {
         this.isPrinting = true;
-        printEscPos(this.order).then((res) => {
-          if (res.status !== "success") {
+        printEscPos({
+          order: this.order,
+          totalPrice: this.totalPrice,
+          customerName: this.customerName,
+          arrivalTime: this.arrivalTime,
+        }).then((res) => {
+          if (!res || !res.status || res.status !== "success") {
             this.printerError = "Printer error! Make sure server is running";
           } else {
             this.isPrinting = false;
@@ -135,6 +150,11 @@ export default {
 
 <style lang="scss">
 @import "../css/global.scss";
+
+.customer-name-input::placeholder,
+.time-input::placeholder {
+  color: $red;
+}
 
 .customer-name-input {
   padding: 5px;
@@ -255,6 +275,7 @@ export default {
   margin: 0 auto;
   color: $white;
   padding: 20px;
+  margin-bottom: 50px;
 }
 
 .is-printing {
