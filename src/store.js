@@ -36,9 +36,15 @@ export default new Vuex.Store({
     addItemToOrder(state, item) {
       state.order.push(item);
       state.totalPrice += item.price;
+      if(item.side && item.side.price){
+        state.totalPrice += item.side.price;
+      }
     },
     removeItemFromOrder(state, item) {
       state.totalPrice -= item.price;
+      if(item.side && item.side.price){
+        state.totalPrice -= item.side.price;
+      }
       state.order = state.order.filter(function(itemToRemove) {
         return itemToRemove !== item;
       });
@@ -46,6 +52,9 @@ export default new Vuex.Store({
     removeLastItem(state) {
       let removedItem = state.order.pop();
       state.totalPrice -= removedItem.price;
+      if(removedItem.side && removedItem.side.price){
+        state.totalPrice -= removedItem.side.price;
+      }
     },
     resetOrder(state) {
       state.order = [];

@@ -95,9 +95,6 @@ export default {
 
       if (!side) {
         this.currentlySelectedItem.price = this.currentlySelectedItem.price -= AMOUNT_TO_DEDUCT_WHEN_NO_SIDE_SELECTED;
-      } else {
-        this.currentlySelectedItem.price = this.currentlySelectedItem.price +=
-          side.price;
       }
 
       this.addToOrder(this.currentlySelectedItem);
