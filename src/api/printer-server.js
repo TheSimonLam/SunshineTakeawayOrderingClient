@@ -3,10 +3,6 @@ const path = require("path");
 const escpos = require("escpos");
 escpos.Network = require("escpos-network");
 
-const device = new escpos.Network("192.168.1.99");
-const options = { encoding: "GB18030" };
-const printer = new escpos.Printer(device, options);
-
 var bodyParser = require("body-parser");
 var app = require("express")();
 var http = require("http").Server(app);
@@ -26,15 +22,18 @@ http.listen(port, () => {
 });
 
 const print = (body) => {
+  const device = new escpos.Network("192.168.1.99");
+  const options = { encoding: "GB18030" };
+  const printer = new escpos.Printer(device, options);
   const { orderLines, customerName, totalPrice, arrivalTime } = body;
 
   device.open(function() {
     printer
-      .font("a")
+      .font("b")
       .align("ct")
-      .style("bu")
       .size(0.5, 0.5)
       .text("Sunshine Takeaway")
+      .drawLine()
       .newLine()
       .size(1, 1)
       .align("lt")
@@ -49,6 +48,7 @@ const print = (body) => {
     });
 
     printer
+      .drawLine()
       .newLine()
       .text("Price: " + totalPrice)
       .newLine()
@@ -57,7 +57,5 @@ const print = (body) => {
       .newLine()
       .cut()
       .close();
-
-    device.close();
   });
 };
