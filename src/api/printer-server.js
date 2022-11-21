@@ -33,22 +33,23 @@ const print = (body) => {
       .font("a")
       .align("ct")
       .style("bu")
-      .size(1, 1)
+      .size(0.5, 0.5)
       .text("Sunshine Takeaway")
       .newLine()
       .size(1, 1)
       .align("lt")
       .text("Est. Time: " + arrivalTime)
-      .size(0.5, 0.5)
       .newLine();
 
     orderLines.forEach((orderLine) => {
-      printer.text(orderLine).newLine();
+      printer
+        .text(orderLine)
+        .newLine()
+        .newLine();
     });
 
     printer
       .newLine()
-      .size(1, 1)
       .text("Price: " + totalPrice)
       .newLine()
       .text("Name: " + customerName)
