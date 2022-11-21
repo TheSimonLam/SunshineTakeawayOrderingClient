@@ -31,13 +31,10 @@ const print = (body) => {
     printer
       .font("b")
       .align("ct")
-      .size(0.5, 0.5)
-      .text("Sunshine Takeaway")
-      .drawLine()
       .newLine()
       .size(1, 1)
       .align("lt")
-      .text("Est. Time: " + arrivalTime)
+      .text(arrivalTime)
       .newLine();
 
     orderLines.forEach((orderLine) => {
@@ -48,7 +45,6 @@ const print = (body) => {
     });
 
     printer
-      .drawLine()
       .newLine()
       .text("Price: " + totalPrice)
       .newLine()

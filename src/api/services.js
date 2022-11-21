@@ -20,12 +20,12 @@ export const printEscPos = async ({
 
   order.forEach((item) => {
     const orderLine = item.id
-      ? item.id + " - " + item.name + " " + item.price.toFixed(2)
-      : item.name + " " + item.price.toFixed(2);
+      ? "1-" + item.id + " (" + item.price.toFixed(2) + ")"
+      : item.name + " (" + item.price.toFixed(2) + ")";
     orderLines.push(orderLine);
     if (item.side) {
       orderLines.push(
-        item.side.name + " (with meal) " + item.side.price.toFixed(2)
+        "with " + item.side.name + " (" + item.side.price.toFixed(2) + ")"
       );
     }
   });
