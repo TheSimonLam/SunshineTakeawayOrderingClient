@@ -1085,17 +1085,17 @@ export default [
       {
         id: 4,
         name: "Large chips",
-        price: 0.3,
+        price: 0.4,
       },
       {
         id: 5,
         name: "Noodles & Beansprouts",
-        price: 1.8,
+        price: 2.0,
       },
       {
         id: 6,
         name: "Noodles",
-        price: 1.8,
+        price: 2.0,
       },
       {
         id: 7,
@@ -1105,7 +1105,7 @@ export default [
       {
         id: 8,
         name: "Salt and pepper chips",
-        price: 1.6,
+        price: 1.8,
       },
       {
         id: 9,
