@@ -22,7 +22,7 @@ http.listen(port, () => {
 });
 
 const print = (body) => {
-  const device = new escpos.Network("192.168.1.99");
+  const device = new escpos.Network("192.168.1.101");
   const options = { encoding: "GB18030" };
   const printer = new escpos.Printer(device, options);
   const { orderLines, customerName, totalPrice, arrivalTime } = body;
@@ -33,8 +33,9 @@ const print = (body) => {
       .align("ct")
       .newLine()
       .size(1, 1)
-      .align("lt")
+      .align("rt")
       .text(arrivalTime)
+      .align("lt")
       .newLine();
 
     orderLines.forEach((orderLine) => {

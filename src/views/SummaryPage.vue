@@ -92,6 +92,7 @@
 
 <script>
 import { printEscPos } from "../api/services";
+import { HOST_IP } from "../consts";
 
 export default {
   name: "confirm",
@@ -117,6 +118,7 @@ export default {
       if (!this.isPrinting) {
         this.isPrinting = true;
         printEscPos({
+          HOST_IP,
           order: this.order,
           totalPrice: this.totalPrice,
           customerName: this.customerName,

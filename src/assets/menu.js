@@ -225,6 +225,11 @@ export default [
         name: "Fried Soft Noodles & Beansprouts",
         price: 4.5,
       },
+      {
+        id: "",
+        name: "Noodles",
+        price: 4.5,
+      },
     ],
   },
   {

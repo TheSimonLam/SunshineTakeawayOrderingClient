@@ -134,7 +134,7 @@ export default {
       this.selectedCategoryName = "";
       const menu = this.$store.getters.getMenu;
       const results = [];
-      menu.forEach((categoryItem) => {
+      menu.filter((menuType) => menuType.hidden !== true).forEach((categoryItem) => {
         categoryItem.items.forEach((item) => {
           if (
             item.id.toString().includes(this.searchTerm) ||
