@@ -17,12 +17,37 @@
         </div>
       </div>
     </div>
+    <div class="overlay-container" v-if="showDeleteItemOverlay">
+      <div class="overlay-background" @click="toggleDeleteItemOverlay"></div>
+      <div class="reset-overlay-wrapper">
+        <div>Are you sure you want to remove {{ itemToBeDeleted.name }}?</div>
+        <div class="overlay-buttons-container">
+          <button
+            class="overlay-button overlay-button-yes"
+            @click="
+              removeItem(itemToBeDeleted);
+              toggleDeleteItemOverlay();
+            "
+          >
+            Yes
+          </button>
+          <button
+            class="overlay-button overlay-button-no"
+            @click="toggleDeleteItemOverlay"
+          >
+            No
+          </button>
+        </div>
+      </div>
+    </div>
     <div class="ordered-items-container">
       <div v-if="printerError" class="printer-error-container">
         Printer error: {{ printerError }}
       </div>
       <div class="item-container" v-for="item in order">
-        <span class="delete-icon" @click="removeItem(item)">✖</span>
+        <span class="delete-icon" @click="toggleDeleteItemOverlay(item)"
+          >✖</span
+        >
         <div v-if="item.id" class="ordered-item ordered-item-name">
           {{ item.id }}. {{ item.name }}
         </div>
@@ -96,10 +121,12 @@ export default {
   data() {
     return {
       showResetOverlay: false,
+      showDeleteItemOverlay: false,
       isPrinting: false,
       printerError: "",
       customerName: "",
       arrivalTime: "",
+      itemToBeDeleted: undefined,
     };
   },
   methods: {
@@ -126,6 +153,10 @@ export default {
     },
     toggleResetOverlay() {
       this.showResetOverlay = !this.showResetOverlay;
+    },
+    toggleDeleteItemOverlay(item) {
+      this.itemToBeDeleted = item;
+      this.showDeleteItemOverlay = !this.showDeleteItemOverlay;
     },
     reset() {
       this.toggleResetOverlay();
