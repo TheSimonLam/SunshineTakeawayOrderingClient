@@ -1114,7 +1114,7 @@ export default [
       },
       {
         id: 9,
-        name: "None",
+        name: "No side",
         price: 0,
       },
     ],

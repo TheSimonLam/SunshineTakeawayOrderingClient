@@ -59,7 +59,10 @@
         </template>
       </div>
       <div class="category-items-container">
-        <Category :items="searchTerm ? searchResults : getSelectedCategory" />
+        <Category
+          :items="searchTerm ? searchResults : getSelectedCategory"
+          :resetSearch="resetSearch"
+        />
       </div>
     </div>
   </div>
@@ -130,20 +133,27 @@ export default {
       this.searchTerm = "";
       this.searchResults = "";
     },
+    resetSearch(){
+      this.selectedCategoryName = ""
+      this.searchResults = undefined
+      this.searchTerm = ""
+    },
     setSearchTerm() {
       this.selectedCategoryName = "";
       const menu = this.$store.getters.getMenu;
       const results = [];
-      menu.filter((menuType) => menuType.hidden !== true).forEach((categoryItem) => {
-        categoryItem.items.forEach((item) => {
-          if (
-            item.id.toString().includes(this.searchTerm) ||
-            item.name.toLowerCase().includes(this.searchTerm.toLowerCase())
-          ) {
-            results.push(item);
-          }
+      menu
+        .filter((menuType) => menuType.hidden !== true)
+        .forEach((categoryItem) => {
+          categoryItem.items.forEach((item) => {
+            if (
+              item.id.toString().includes(this.searchTerm) ||
+              item.name.toLowerCase().includes(this.searchTerm.toLowerCase())
+            ) {
+              results.push(item);
+            }
+          });
         });
-      });
       this.searchResults = results;
     },
   },

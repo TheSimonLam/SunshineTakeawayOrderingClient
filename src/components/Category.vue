@@ -20,8 +20,11 @@
     </div>
 
     <div class="side-overlay-container" v-if="showSideOverlay">
-      <div class="overlay-background"></div>
+      <div class="overlay-background" @click="toggleSideOverlay()"></div>
       <div class="side-container">
+        <button class="close-side-overlay-button" @click="toggleSideOverlay()">
+          ✖
+        </button>
         <div>Choose a side:</div>
         <div class="side-overlay-buttons-container">
           <template v-for="mealSide in mealSides">
@@ -41,7 +44,7 @@ import { AMOUNT_TO_DEDUCT_WHEN_NO_SIDE_SELECTED } from "../consts";
 
 export default {
   name: "category",
-  props: ["items"],
+  props: ["items", "resetSearch"],
   data: function() {
     return {
       showSideOverlay: false,
@@ -71,6 +74,7 @@ export default {
       this.currentlySelectedItem = {};
       item.uuid = uuid();
       this.$store.commit("addItemToOrder", item);
+      this.resetSearch("")
     },
     fireAddedToBasketMessage(e) {
       let message = document.getElementById("item-added-message");
@@ -152,6 +156,8 @@ export default {
 }
 
 .item-id {
+  font-weight: bold;
+  font-size: 1.2em;
 }
 
 .item-emoji {
@@ -160,7 +166,6 @@ export default {
 
 .item-name {
   font-size: 1em;
-  font-weight: bold;
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -194,8 +199,8 @@ export default {
 .side-container {
   display: inline-block;
   background: #fff;
-  width: 40%;
-  height: 60vh;
+  width: 80%;
+  height: 50vh;
   border-radius: 5px;
   padding: 40px;
   position: absolute;
@@ -224,5 +229,16 @@ export default {
   align-items: center;
   border-radius: 5px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.close-side-overlay-button {
+  position: absolute;
+  top: 5px;
+  left: 10px;
+  border: 0;
+  background: none;
+  font-size: 1.5em;
+  color: red;
+  height: 45px;
 }
 </style>
