@@ -1,25 +1,5 @@
 <template>
   <div>
-    <div class="order-page-nav">
-      <div
-        class="order-page-nav-button reset-container"
-        @click="toggleResetOverlay"
-      >
-        Reset
-      </div>
-      <div
-        class="order-page-nav-button undo-container"
-        @click="undoLastItemAdded"
-      >
-        Undo
-      </div>
-      <div
-        class="order-page-nav-button next-container"
-        @click="goToConfirmationPage"
-      >
-        Summary (£{{ totalPrice.toFixed(2) }})
-      </div>
-    </div>
     <div id="item-added-message" class="item-added-message-container">
       Item added!
     </div>
@@ -63,6 +43,26 @@
           :items="searchTerm ? searchResults : getSelectedCategory"
           :resetSearch="resetSearch"
         />
+      </div>
+    </div>
+    <div class="order-page-nav">
+      <div
+        class="order-page-nav-button reset-container"
+        @click="toggleResetOverlay"
+      >
+        Reset
+      </div>
+      <div
+        class="order-page-nav-button undo-container"
+        @click="removeLastItemAdded"
+      >
+        Remove last item
+      </div>
+      <div
+        class="order-page-nav-button next-container"
+        @click="goToConfirmationPage"
+      >
+        Summary (£{{ totalPrice.toFixed(2) }})
       </div>
     </div>
   </div>
@@ -112,7 +112,7 @@ export default {
     goToConfirmationPage() {
       this.$router.push({ path: "confirm" });
     },
-    undoLastItemAdded() {
+    removeLastItemAdded() {
       if (this.orderItemCount > 0) {
         this.$store.commit("removeLastItem");
       }
@@ -133,10 +133,10 @@ export default {
       this.searchTerm = "";
       this.searchResults = "";
     },
-    resetSearch(){
-      this.selectedCategoryName = ""
-      this.searchResults = undefined
-      this.searchTerm = ""
+    resetSearch() {
+      this.selectedCategoryName = "";
+      this.searchResults = undefined;
+      this.searchTerm = "";
     },
     setSearchTerm() {
       this.selectedCategoryName = "";
@@ -276,7 +276,7 @@ export default {
   margin-top: 10px;
 }
 
-.reset-overlay-container {
+.overlay-container {
   position: fixed;
   top: 0;
   left: 0;

@@ -1,5 +1,5 @@
 <template>
-  <div class="reset-overlay-container">
+  <div class="overlay-container">
     <div class="overlay-background" @click="$emit('toggleResetOverlay')"></div>
     <div class="reset-overlay-wrapper">
       <div>Are you sure you want to reset?</div>
@@ -32,15 +32,6 @@ export default {
 
 <style lang="scss">
 @import "../css/global.scss";
-
-.reset-overlay-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  text-align: center;
-}
 
 .reset-overlay-wrapper {
   border: 1px solid black;
