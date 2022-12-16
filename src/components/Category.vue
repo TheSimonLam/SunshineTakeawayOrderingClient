@@ -19,7 +19,7 @@
       </div>
     </div>
 
-    <div class="side-overlay-container" v-if="showSideOverlay">
+    <div class="overlay-container" v-if="showSideOverlay">
       <div class="overlay-background" @click="toggleSideOverlay()"></div>
       <div class="side-container">
         <button class="close-side-overlay-button" @click="toggleSideOverlay()">
@@ -32,6 +32,42 @@
               {{ mealSide.name }}
             </button>
           </template>
+        </div>
+      </div>
+    </div>
+
+    <div class="overlay-container" v-if="showSaltAndVinegarOverlay">
+      <div
+        class="overlay-background"
+        @click="toggleSaltAndVinegarOverlay()"
+      ></div>
+      <div class="side-container">
+        <button
+          class="close-side-overlay-button"
+          @click="toggleSaltAndVinegarOverlay()"
+        >
+          ✖
+        </button>
+        <div>Salt & Vinegar?</div>
+        <div class="side-overlay-buttons-container">
+          <button
+            class="side-overlay-button"
+            @click="saltAndVinegarChosen('salt')"
+          >
+            Salt
+          </button>
+          <button
+            class="side-overlay-button"
+            @click="saltAndVinegarChosen('vinegar')"
+          >
+            Vinegar
+          </button>
+          <button
+            class="side-overlay-button"
+            @click="saltAndVinegarChosen('salt & vinegar')"
+          >
+            Salt & Vinegar
+          </button>
         </div>
       </div>
     </div>
@@ -48,6 +84,7 @@ export default {
   data: function() {
     return {
       showSideOverlay: false,
+      showSaltAndVinegarOverlay: false,
       currentlySelectedItem: {},
     };
   },
@@ -59,11 +96,16 @@ export default {
   methods: {
     itemSelected(item, e) {
       const sideIncluded = item.sideIncluded;
+      const saltAndVinegar = item.saltAndVinegar;
+
       let mutableItem = JSON.parse(JSON.stringify(item)); //Stupid hack for deepcloning an object
       if (sideIncluded && !mutableItem.dontIncludeSideOverride) {
         //the override's for vegetarian chow mein
         this.currentlySelectedItem = mutableItem;
         this.toggleSideOverlay();
+      } else if (saltAndVinegar) {
+        this.currentlySelectedItem = mutableItem;
+        this.toggleSaltAndVinegarOverlay();
       } else {
         this.addToOrder(mutableItem, e);
       }
@@ -74,7 +116,7 @@ export default {
       this.currentlySelectedItem = {};
       item.uuid = uuid();
       this.$store.commit("addItemToOrder", item);
-      this.resetSearch("")
+      this.resetSearch("");
     },
     fireAddedToBasketMessage(e) {
       let message = document.getElementById("item-added-message");
@@ -94,6 +136,9 @@ export default {
     toggleSideOverlay() {
       this.showSideOverlay = !this.showSideOverlay;
     },
+    toggleSaltAndVinegarOverlay() {
+      this.showSaltAndVinegarOverlay = !this.showSaltAndVinegarOverlay;
+    },
     sideChosen(side) {
       this.currentlySelectedItem.side = side;
 
@@ -103,6 +148,11 @@ export default {
 
       this.addToOrder(this.currentlySelectedItem);
       this.toggleSideOverlay();
+    },
+    saltAndVinegarChosen(option) {
+      this.currentlySelectedItem.name += " with " + option;
+      this.addToOrder(this.currentlySelectedItem);
+      this.toggleSaltAndVinegarOverlay();
     },
     generateEmoji(itemName) {
       if (itemName.toLowerCase().indexOf("special") > -1) return "✨";
@@ -179,7 +229,7 @@ export default {
 .items-container {
 }
 
-.side-overlay-container {
+.overlay-container {
   position: fixed;
   top: 0;
   left: 0;
