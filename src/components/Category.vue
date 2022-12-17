@@ -115,7 +115,7 @@ export default {
 
       this.currentlySelectedItem = {};
       item.uuid = uuid();
-      this.$store.commit("addItemToOrder", item);
+      this.$store.commit("addItemToOrder", { item });
       this.resetSearch("");
     },
     fireAddedToBasketMessage(e) {

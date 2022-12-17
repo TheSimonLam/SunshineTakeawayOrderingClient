@@ -2,7 +2,7 @@
   <div class="confirmation-page-container">
     <div class="overlay-container" v-if="showResetOverlay">
       <div class="overlay-background" @click="toggleResetOverlay"></div>
-      <div class="reset-overlay-wrapper">
+      <div class="overlay-wrapper">
         <div>Are you sure you want to reset?</div>
         <div class="overlay-buttons-container">
           <button class="overlay-button overlay-button-yes" @click="reset">
@@ -19,7 +19,7 @@
     </div>
     <div class="overlay-container" v-if="showDeleteItemOverlay">
       <div class="overlay-background" @click="toggleDeleteItemOverlay"></div>
-      <div class="reset-overlay-wrapper">
+      <div class="overlay-wrapper">
         <div>Are you sure you want to remove {{ itemToBeDeleted.name }}?</div>
         <div class="overlay-buttons-container">
           <button
@@ -40,11 +40,29 @@
         </div>
       </div>
     </div>
+    <div class="overlay-container" v-if="showEditOverlay">
+      <div class="overlay-background" @click="toggleEditOverlay"></div>
+      <div class="overlay-wrapper">
+        <div>Editing</div>
+        <input v-model="itemEditValue" />
+        <div class="overlay-buttons-container">
+          <button class="overlay-button overlay-button-yes" @click="saveEdit()">
+            Save
+          </button>
+          <button
+            class="overlay-button overlay-button-no"
+            @click="toggleEditOverlay()"
+          >
+            Cancel
+          </button>
+        </div>
+      </div>
+    </div>
     <div class="ordered-items-container">
       <div v-if="printerError" class="printer-error-container">
         Printer error: {{ printerError }}
       </div>
-      <div class="item-container" v-for="item in order">
+      <div class="item-container" v-for="(item, index) in order">
         <span class="delete-icon" @click="toggleDeleteItemOverlay(item)"
           >✖</span
         >
@@ -61,6 +79,12 @@
         <div class="ordered-item ordered-item-price">
           £{{ item.price.toFixed(2) }}
         </div>
+        <button
+          class="ordered-item-edit-button"
+          @click="toggleEditOverlay(index)"
+        >
+          Edit
+        </button>
       </div>
       <div class="price-container">Total: £{{ totalPrice.toFixed(2) }}</div>
       <div class="name-container">
@@ -122,11 +146,14 @@ export default {
     return {
       showResetOverlay: false,
       showDeleteItemOverlay: false,
+      showEditOverlay: false,
       isPrinting: false,
       printerError: "",
       customerName: "",
       arrivalTime: "",
       itemToBeDeleted: undefined,
+      itemIndexToBeEdited: undefined,
+      itemEditValue: "",
     };
   },
   methods: {
@@ -154,9 +181,24 @@ export default {
     toggleResetOverlay() {
       this.showResetOverlay = !this.showResetOverlay;
     },
+    toggleEditOverlay(itemIndexToBeEdited) {
+      this.itemIndexToBeEdited = itemIndexToBeEdited;
+      this.itemEditValue = "";
+      this.showEditOverlay = !this.showEditOverlay;
+    },
     toggleDeleteItemOverlay(item) {
       this.itemToBeDeleted = item;
       this.showDeleteItemOverlay = !this.showDeleteItemOverlay;
+    },
+    saveEdit() {
+      const editedOrder = this.order[this.itemIndexToBeEdited];
+      this.removeItem(editedOrder);
+      editedOrder.name += " (NOTE: " + this.itemEditValue + ")";
+      this.$store.commit("addItemToOrder", {
+        item: editedOrder,
+        indexToInsert: this.itemIndexToBeEdited,
+      });
+      this.toggleEditOverlay();
     },
     reset() {
       this.toggleResetOverlay();
@@ -302,5 +344,11 @@ export default {
 
 .is-printing {
   background-color: $lightGrey;
+}
+
+.ordered-item-edit-button {
+  vertical-align: middle;
+  border: none;
+  background: none;
 }
 </style>

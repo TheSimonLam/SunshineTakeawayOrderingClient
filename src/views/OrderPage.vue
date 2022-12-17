@@ -134,7 +134,6 @@ export default {
       this.searchResults = "";
     },
     resetSearch() {
-      this.selectedCategoryName = "";
       this.searchResults = undefined;
       this.searchTerm = "";
     },

@@ -33,16 +33,21 @@ export default new Vuex.Store({
     mealSides: initSideOrders(),
   },
   mutations: {
-    addItemToOrder(state, item) {
-      state.order.push(item);
+    addItemToOrder(state, { item, indexToInsert = undefined }) {
+      if (indexToInsert !== undefined) {
+        state.order.splice(indexToInsert, 0, item);
+      } else {
+        state.order.push(item);
+      }
+
       state.totalPrice += item.price;
-      if(item.side && item.side.price){
+      if (item.side && item.side.price) {
         state.totalPrice += item.side.price;
       }
     },
     removeItemFromOrder(state, item) {
       state.totalPrice -= item.price;
-      if(item.side && item.side.price){
+      if (item.side && item.side.price) {
         state.totalPrice -= item.side.price;
       }
       state.order = state.order.filter(function(itemToRemove) {
@@ -52,7 +57,7 @@ export default new Vuex.Store({
     removeLastItem(state) {
       let removedItem = state.order.pop();
       state.totalPrice -= removedItem.price;
-      if(removedItem.side && removedItem.side.price){
+      if (removedItem.side && removedItem.side.price) {
         state.totalPrice -= removedItem.side.price;
       }
     },

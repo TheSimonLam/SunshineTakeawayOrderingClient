@@ -50,9 +50,11 @@ export default {
     addToOrder() {
       if (this.itemDesc !== "" && !isNaN(parseFloat(this.itemPrice))) {
         this.$store.commit("addItemToOrder", {
-          id: "-",
-          price: parseFloat(this.itemPrice),
-          name: this.itemDesc,
+          item: {
+            id: "-",
+            price: parseFloat(this.itemPrice),
+            name: this.itemDesc,
+          },
         });
         this.itemDesc = "";
         this.itemPrice = "";

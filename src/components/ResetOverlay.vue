@@ -1,7 +1,7 @@
 <template>
   <div class="overlay-container">
     <div class="overlay-background" @click="$emit('toggleResetOverlay')"></div>
-    <div class="reset-overlay-wrapper">
+    <div class="overlay-wrapper">
       <div>Are you sure you want to reset?</div>
       <div class="overlay-buttons-container">
         <button class="overlay-button overlay-button-yes" @click="reset">
@@ -33,7 +33,7 @@ export default {
 <style lang="scss">
 @import "../css/global.scss";
 
-.reset-overlay-wrapper {
+.overlay-wrapper {
   border: 1px solid black;
   display: inline-block;
   background: #fff;
