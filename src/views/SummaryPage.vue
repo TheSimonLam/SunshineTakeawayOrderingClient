@@ -103,6 +103,18 @@
           v-model="arrivalTime"
         />
       </div>
+      <div class="time-buttons-container">
+        <button class="time-button" @click="timeSelected('Now')">Now</button>
+        <button class="time-button" @click="timeSelected('5')">5 mins</button>
+        <button class="time-button" @click="timeSelected('10')">10 mins</button>
+        <button class="time-button" @click="timeSelected('15')">15 mins</button>
+        <button class="time-button" @click="timeSelected('20')">20 mins</button>
+        <button class="time-button" @click="timeSelected('25')">25 mins</button>
+        <button class="time-button" @click="timeSelected('30')">30 mins</button>
+        <button class="time-button" @click="timeSelected('35')">35 mins</button>
+        <button class="time-button" @click="timeSelected('40')">40 mins</button>
+        <button class="time-button" @click="timeSelected('45')">45 mins</button>
+      </div>
     </div>
     <div v-if="showSummaryNav" class="summary-page-nav">
       <div
@@ -183,6 +195,20 @@ export default {
           });
       }
     },
+    timeSelected(timeSelected) {
+      this.arrivalTime = timeSelected;
+      if (timeSelected !== "Now") {
+        const nowDate = new Date();
+        const adjustedArrivalTime = new Date(
+          nowDate.getTime() + parseInt(timeSelected) * 60000
+        );
+        const hours = (adjustedArrivalTime.getHours() + 24) % 12 || 12;
+        const minutes = adjustedArrivalTime.getMinutes();
+        const formattedMinutes =
+          minutes.toString().length === 1 ? "0" + minutes : minutes;
+        this.arrivalTime = hours + ":" + formattedMinutes;
+      }
+    },
     backToOrderPage() {
       this.$router.push({ path: "order" });
     },
@@ -228,6 +254,22 @@ export default {
 
 <style lang="scss">
 @import "../css/global.scss";
+
+.time-button {
+  height: 50px;
+  margin-right: 30px;
+  margin-bottom: 20px;
+  width: 80px;
+  border-radius: 5px;
+  border: 1px solid $black;
+}
+
+.time-buttons-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding-top: 20px;
+}
 
 .customer-name-input::placeholder,
 .time-input::placeholder {
