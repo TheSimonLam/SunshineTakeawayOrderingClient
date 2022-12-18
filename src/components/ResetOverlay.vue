@@ -34,7 +34,7 @@ export default {
 @import "../css/global.scss";
 
 .overlay-wrapper {
-  border: 1px solid black;
+  border: 1px solid $black;
   display: inline-block;
   background: #fff;
   width: 290px;

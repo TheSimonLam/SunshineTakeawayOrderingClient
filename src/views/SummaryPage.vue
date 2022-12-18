@@ -298,7 +298,7 @@ export default {
 
 .confirmation-button {
   background: white;
-  border: 2px solid black;
+  border: 2px solid $black;
   display: inline-block;
   height: 80px;
   font-size: 2em;

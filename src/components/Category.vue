@@ -135,11 +135,11 @@ export default {
     },
     toggleSideOverlay() {
       this.showSideOverlay = !this.showSideOverlay;
-      this.toggleHideOrderNavBar()
+      this.toggleHideOrderNavBar();
     },
     toggleSaltAndVinegarOverlay() {
       this.showSaltAndVinegarOverlay = !this.showSaltAndVinegarOverlay;
-      this.toggleHideOrderNavBar()
+      this.toggleHideOrderNavBar();
     },
     sideChosen(side) {
       this.currentlySelectedItem.side = side;
@@ -181,12 +181,12 @@ export default {
   margin-top: 10px;
   font-size: 1.5em;
   font-weight: bold;
-  border: 2px solid black;
+  border: 2px solid $black;
 }
 
 .item-square-container {
   display: flex;
-  height: 150px;
+  height: 155px;
   width: 100px;
   background: $white;
   margin: 10px;
@@ -229,6 +229,7 @@ export default {
 }
 
 .items-container {
+  padding-bottom: 110px;
 }
 
 .overlay-container {
@@ -241,7 +242,7 @@ export default {
 }
 
 .overlay-background {
-  background: black;
+  background: $black;
   height: 100%;
   width: 100%;
   opacity: 0.5;

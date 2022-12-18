@@ -13,18 +13,18 @@
     ></CustomItemOverlay>
     <div class="order-page-container">
       <div class="categories-list-container">
-        <input
-          class="search-bar-input"
-          placeholder="Search..."
-          v-model="searchTerm"
-          @keyup="setSearchTerm"
-        />
         <div
           class="categories-list-item custom-item-button"
           @click="toggleCustomItemOverlay()"
         >
           Custom Item
         </div>
+        <input
+          class="search-bar-input"
+          placeholder="Search..."
+          v-model="searchTerm"
+          @keyup="showSearchTermResults"
+        />
         <template v-for="category in menu">
           <div
             v-if="!category.hidden"
@@ -39,6 +39,11 @@
         </template>
       </div>
       <div class="category-items-container">
+        <Keypad
+          :searchTerm="searchTerm"
+          :setSearchTerm="setSearchTerm"
+          :showSearchTermResults="showSearchTermResults"
+        />
         <Category
           :items="searchTerm ? searchResults : getSelectedCategory"
           :resetSearch="resetSearch"
@@ -73,6 +78,7 @@
 import Category from "../components/Category";
 import CustomItemOverlay from "../components/CustomItemOverlay";
 import ResetOverlay from "../components/ResetOverlay.vue";
+import Keypad from "../components/Keypad.vue";
 
 export default {
   name: "order",
@@ -80,6 +86,7 @@ export default {
     Category,
     ResetOverlay,
     CustomItemOverlay,
+    Keypad,
   },
   computed: {
     menu() {
@@ -142,7 +149,10 @@ export default {
       this.searchResults = undefined;
       this.searchTerm = "";
     },
-    setSearchTerm() {
+    setSearchTerm(searchTerm) {
+      this.searchTerm = searchTerm;
+    },
+    showSearchTermResults(exact = false) {
       this.selectedCategoryName = "";
       const menu = this.$store.getters.getMenu;
       const results = [];
@@ -150,11 +160,17 @@ export default {
         .filter((menuType) => menuType.hidden !== true)
         .forEach((categoryItem) => {
           categoryItem.items.forEach((item) => {
-            if (
-              item.id.toString().includes(this.searchTerm) ||
-              item.name.toLowerCase().includes(this.searchTerm.toLowerCase())
-            ) {
-              results.push(item);
+            if (exact) {
+              if (item.id.toString() === this.searchTerm) {
+                results.push(item);
+              }
+            } else {
+              if (
+                item.id.toString().includes(this.searchTerm) ||
+                item.name.toLowerCase().includes(this.searchTerm.toLowerCase())
+              ) {
+                results.push(item);
+              }
             }
           });
         });
@@ -189,6 +205,7 @@ export default {
   display: flex;
   flex: 4;
   background-color: $lightGrey;
+  flex-direction: column;
 }
 
 .categories-list-container {
@@ -196,7 +213,7 @@ export default {
   flex: 1;
   display: flex;
   flex-direction: column;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid $black;
   height: calc(100vh - 100px);
   overflow-y: scroll;
 }
@@ -207,7 +224,7 @@ export default {
 
 .categories-list-item {
   font-size: 1.8em;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid $black;
   padding: 5px;
 }
 
@@ -258,7 +275,7 @@ export default {
   opacity: 0;
   top: -500px;
   left: -500px;
-  border: 1px solid black;
+  border: 1px solid $black;
   border-radius: 5px;
   padding: 5px;
   background: white;
@@ -269,7 +286,7 @@ export default {
 }
 
 .overlay-background {
-  background: black;
+  background: $black;
   height: 100%;
   width: 100%;
   opacity: 0.5;
