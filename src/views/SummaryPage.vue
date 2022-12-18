@@ -44,7 +44,7 @@
       <div class="overlay-background" @click="toggleEditOverlay"></div>
       <div class="overlay-wrapper">
         <div>Editing</div>
-        <input v-model="itemEditValue" />
+        <input class="edit-item-input" v-model="itemEditValue" />
         <div class="overlay-buttons-container">
           <button class="overlay-button overlay-button-yes" @click="saveEdit()">
             Save
@@ -159,6 +159,7 @@ export default {
   methods: {
     placeOrder() {
       if (!this.isPrinting) {
+        this.printerError = "";
         this.isPrinting = true;
         printEscPos({
           HOST_IP,
@@ -166,13 +167,19 @@ export default {
           totalPrice: this.totalPrice,
           customerName: this.customerName,
           arrivalTime: this.arrivalTime,
-        }).then((res) => {
-          if (!res || !res.status || res.status !== "success") {
-            this.printerError = "Printer error! Make sure server is running";
-          } else {
+        })
+          .then((res) => {
+            if (!res || !res.status || res.status !== "success") {
+              this.printerError = "Printer error! Make sure server is running";
+              this.isPrinting = false;
+            } else {
+              this.isPrinting = false;
+            }
+          })
+          .catch((err) => {
+            this.printerError = err.message;
             this.isPrinting = false;
-          }
-        });
+          });
       }
     },
     backToOrderPage() {
@@ -350,5 +357,9 @@ export default {
   vertical-align: middle;
   border: none;
   background: none;
+}
+
+.edit-item-input {
+  font-size: 0.8em;
 }
 </style>
