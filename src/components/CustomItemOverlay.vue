@@ -1,9 +1,6 @@
 <template>
   <div class="custom-item-overlay-container">
-    <div
-      class="overlay-background"
-      @click="$emit('toggleCustomItemOverlay')"
-    ></div>
+    <div class="overlay-background" @click="toggleCustomItemOverlay()"></div>
     <div class="custom-item-overlay-wrapper">
       <div class="input-row-container">
         <textarea
@@ -30,7 +27,7 @@
         </button>
         <button
           class="overlay-button overlay-button-no"
-          @click="$emit('toggleCustomItemOverlay')"
+          @click="toggleCustomItemOverlay()"
         >
           Cancel
         </button>
@@ -41,6 +38,7 @@
 <script>
 export default {
   name: "custom-item-overlay",
+  props: ["toggleCustomItemOverlay"],
   data: function() {
     return {
       itemDesc: "",
@@ -59,6 +57,7 @@ export default {
         });
         this.itemDesc = "";
         this.itemPrice = "";
+        this.toggleCustomItemOverlay();
       }
     },
   },

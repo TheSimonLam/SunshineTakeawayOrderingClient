@@ -89,5 +89,6 @@ export default {
   font-weight: bold;
   border: 1px solid $red;
   background: $white;
+  border-top: none;
 }
 </style>

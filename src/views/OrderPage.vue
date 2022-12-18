@@ -9,7 +9,7 @@
     ></ResetOverlay>
     <CustomItemOverlay
       v-if="showCustomItemOverlay"
-      @toggleCustomItemOverlay="toggleCustomItemOverlay"
+      :toggleCustomItemOverlay="toggleCustomItemOverlay"
     ></CustomItemOverlay>
     <div class="order-page-container">
       <div class="categories-list-container">
