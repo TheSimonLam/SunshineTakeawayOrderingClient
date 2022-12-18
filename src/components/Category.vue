@@ -1,22 +1,23 @@
 <template>
   <div>
     <div class="items-container">
-      <div
-        class="item-square-container"
-        @click="itemSelected(item, $event)"
-        v-for="item in items"
-        v-bind:key="item.name"
-      >
-        <div class="item-top-row">
-          <div class="item item-id">{{ item.id }}</div>
-          <div class="item-emoji" v-if="generateEmoji(item.name)">
-            {{ generateEmoji(item.name) }}
+      <template v-for="item in items">
+        <div
+          class="item-square-container"
+          @click="itemSelected(item, $event)"
+          v-bind:class="generateMeatClass(item.name)"
+        >
+          <div class="item-top-row">
+            <div class="item item-id">{{ item.id }}</div>
+            <div class="item-emoji" v-if="generateEmoji(item.name)">
+              {{ generateEmoji(item.name) }}
+            </div>
           </div>
+          <div class="item item-name">{{ item.name }}</div>
+          <div class="item item-price">£{{ item.price.toFixed(2) }}</div>
+          <div class="item item-allergens">{{ item.allergens }}</div>
         </div>
-        <div class="item item-name">{{ item.name }}</div>
-        <div class="item item-price">£{{ item.price.toFixed(2) }}</div>
-        <div class="item item-allergens">{{ item.allergens }}</div>
-      </div>
+      </template>
     </div>
 
     <div class="overlay-container" v-if="showSideOverlay">
@@ -160,10 +161,30 @@ export default {
       if (itemName.toLowerCase().indexOf("special") > -1) return "✨";
       if (itemName.toLowerCase().indexOf("beef") > -1) return "🐄";
       if (itemName.toLowerCase().indexOf("chicken") > -1) return "🐔";
-      if (itemName.toLowerCase().indexOf("pork") > -1) return "🐷";
+      if (
+        itemName.toLowerCase().indexOf("pork") > -1 ||
+        itemName.toLowerCase().indexOf("ham") > -1
+      )
+        return "🐷";
       if (itemName.toLowerCase().indexOf("siu") > -1) return "🍖";
       if (itemName.toLowerCase().indexOf("king") > -1) return "🍤";
       if (itemName.toLowerCase().indexOf("prawn") > -1) return "🦐";
+    },
+    generateMeatClass(itemName) {
+      if (itemName.toLowerCase().indexOf("special") > -1)
+        return "special-color";
+      if (itemName.toLowerCase().indexOf("beef") > -1) return "beef-color";
+      if (itemName.toLowerCase().indexOf("chicken") > -1)
+        return "chicken-color";
+      if (
+        itemName.toLowerCase().indexOf("pork") > -1 ||
+        itemName.toLowerCase().indexOf("ham") > -1
+      )
+        return "pork-color";
+      if (itemName.toLowerCase().indexOf("siu") > -1) return "siu-color";
+      if (itemName.toLowerCase().indexOf("king") > -1)
+        return "king-prawn-color";
+      if (itemName.toLowerCase().indexOf("prawn") > -1) return "prawn-color";
     },
   },
 };
@@ -293,5 +314,27 @@ export default {
   font-size: 1.5em;
   color: red;
   height: 45px;
+}
+
+.special-color {
+  background-color: $specialColor;
+}
+.beef-color {
+  background-color: $beefColor;
+}
+.chicken-color {
+  background-color: $chickenColor;
+}
+.pork-color {
+  background-color: $porkColor;
+}
+.siu-color {
+  background-color: $siuColor;
+}
+.king-prawn-color {
+  background-color: $kingPrawnColor;
+}
+.prawn-color {
+  background-color: $prawnColor;
 }
 </style>

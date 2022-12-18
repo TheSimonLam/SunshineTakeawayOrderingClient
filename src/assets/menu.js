@@ -938,7 +938,7 @@ export default [
       },
       {
         id: 174,
-        name: "Char Ciu in Chilli Sauce",
+        name: "Char Siu in Chilli Sauce",
         price: 8.4,
         hot: true,
         sideIncluded: true,
