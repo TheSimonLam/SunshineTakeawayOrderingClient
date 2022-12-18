@@ -80,7 +80,7 @@ import { AMOUNT_TO_DEDUCT_WHEN_NO_SIDE_SELECTED } from "../consts";
 
 export default {
   name: "category",
-  props: ["items", "resetSearch"],
+  props: ["items", "resetSearch", "toggleHideOrderNavBar"],
   data: function() {
     return {
       showSideOverlay: false,
@@ -135,9 +135,11 @@ export default {
     },
     toggleSideOverlay() {
       this.showSideOverlay = !this.showSideOverlay;
+      this.toggleHideOrderNavBar()
     },
     toggleSaltAndVinegarOverlay() {
       this.showSaltAndVinegarOverlay = !this.showSaltAndVinegarOverlay;
+      this.toggleHideOrderNavBar()
     },
     sideChosen(side) {
       this.currentlySelectedItem.side = side;

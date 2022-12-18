@@ -42,10 +42,11 @@
         <Category
           :items="searchTerm ? searchResults : getSelectedCategory"
           :resetSearch="resetSearch"
+          :toggleHideOrderNavBar="toggleHideOrderNavBar"
         />
       </div>
     </div>
-    <div class="order-page-nav">
+    <div v-if="showOrderNav" class="order-page-nav">
       <div
         class="order-page-nav-button reset-container"
         @click="toggleResetOverlay"
@@ -106,6 +107,7 @@ export default {
       selectedCategoryItem: undefined,
       searchTerm: "",
       searchResults: undefined,
+      showOrderNav: true,
     };
   },
   methods: {
@@ -122,6 +124,9 @@ export default {
     },
     toggleCustomItemOverlay() {
       this.showCustomItemOverlay = !this.showCustomItemOverlay;
+    },
+    toggleHideOrderNavBar() {
+      this.showOrderNav = !this.showOrderNav;
     },
     reset() {
       this.toggleResetOverlay();

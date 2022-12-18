@@ -104,7 +104,7 @@
         />
       </div>
     </div>
-    <div class="summary-page-nav">
+    <div v-if="showSummaryNav" class="summary-page-nav">
       <div
         class="order-page-nav-button reset-container"
         @click="toggleResetOverlay"
@@ -154,6 +154,7 @@ export default {
       itemToBeDeleted: undefined,
       itemIndexToBeEdited: undefined,
       itemEditValue: "",
+      showSummaryNav: true,
     };
   },
   methods: {
@@ -187,15 +188,21 @@ export default {
     },
     toggleResetOverlay() {
       this.showResetOverlay = !this.showResetOverlay;
+      this.toggleSummaryNav();
     },
     toggleEditOverlay(itemIndexToBeEdited) {
       this.itemIndexToBeEdited = itemIndexToBeEdited;
       this.itemEditValue = "";
       this.showEditOverlay = !this.showEditOverlay;
+      this.toggleSummaryNav();
     },
     toggleDeleteItemOverlay(item) {
       this.itemToBeDeleted = item;
       this.showDeleteItemOverlay = !this.showDeleteItemOverlay;
+      this.toggleSummaryNav();
+    },
+    toggleSummaryNav() {
+      this.showSummaryNav = !this.showSummaryNav;
     },
     saveEdit() {
       const editedOrder = this.order[this.itemIndexToBeEdited];
