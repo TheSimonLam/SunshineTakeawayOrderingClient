@@ -20,9 +20,17 @@ export const printEscPos = async ({
   const orderLines = [];
 
   order.forEach((item) => {
-    const orderLine = item.id
-      ? "1-" + item.id + " (" + item.price.toFixed(2) + ")"
-      : item.name + " (" + item.price.toFixed(2) + ")";
+    let orderLine = item.id ? "1-" + item.id : item.name;
+
+    // Adding the NOTE: for meals with id's
+    if (item.id && item.name.includes("(NOTE:")) {
+      const noteIndex = item.name.indexOf("(NOTE:");
+      const note = item.name.substr(noteIndex, item.name.length - 1);
+      orderLine += " " + note;
+    }
+
+    orderLine += " (" + item.price.toFixed(2) + ")";
+
     orderLines.push(orderLine);
     if (item.side) {
       orderLines.push(
