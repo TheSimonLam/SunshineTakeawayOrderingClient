@@ -15,6 +15,7 @@
       </div>
       <div class="input-row-container">
         <input
+          type="number"
           class="custom-item-input"
           v-model="itemPrice"
           placeholder="Price"
@@ -51,7 +52,7 @@ export default {
       if (this.itemDesc !== "" && !isNaN(parseFloat(this.itemPrice))) {
         this.$store.commit("addItemToOrder", {
           item: {
-            id: "-",
+            id: "",
             price: parseFloat(this.itemPrice),
             name: this.itemDesc,
           },
