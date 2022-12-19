@@ -43,7 +43,7 @@ export default [
       },
       {
         id: "",
-        name: "Pies",
+        name: "Pie",
         price: 1.6,
       },
       {
