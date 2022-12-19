@@ -52,6 +52,32 @@ const print = (body) => {
       .text("Name: " + customerName)
       .newLine()
       .newLine()
+      .cut();
+
+    printer
+      .font("b")
+      .align("ct")
+      .newLine()
+      .size(1, 1)
+      .align("rt")
+      .text(arrivalTime)
+      .align("lt")
+      .newLine();
+
+    orderLines.forEach((orderLine) => {
+      printer
+        .text(orderLine)
+        .newLine()
+        .newLine();
+    });
+
+    printer
+      .newLine()
+      .text("Price: " + totalPrice)
+      .newLine()
+      .text("Name: " + customerName)
+      .newLine()
+      .newLine()
       .cut()
       .close();
   });
