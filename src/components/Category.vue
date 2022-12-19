@@ -69,6 +69,12 @@
           >
             Salt & Vinegar
           </button>
+          <button
+            class="side-overlay-button"
+            @click="saltAndVinegarChosen('')"
+          >
+            None
+          </button>
         </div>
       </div>
     </div>
@@ -153,7 +159,9 @@ export default {
       this.toggleSideOverlay();
     },
     saltAndVinegarChosen(option) {
-      this.currentlySelectedItem.name += " with " + option;
+      if(option){
+        this.currentlySelectedItem.name += " with " + option;
+      }
       this.addToOrder(this.currentlySelectedItem);
       this.toggleSaltAndVinegarOverlay();
     },
