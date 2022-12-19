@@ -84,8 +84,8 @@ export default {
   border: 1px solid $black;
   display: inline-block;
   background: #fff;
-  width: 290px;
-  height: 25vh;
+  width: 35%;
+  height: 40vh;
   border-radius: 5px;
   padding: 40px;
   position: absolute;
