@@ -214,7 +214,7 @@ export default {
   display: flex;
   flex-direction: column;
   border-bottom: 1px solid $black;
-  height: calc(100vh - 100px);
+  padding-bottom: 100px;
   overflow-y: scroll;
 }
 
