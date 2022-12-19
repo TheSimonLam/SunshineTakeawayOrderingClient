@@ -23,7 +23,7 @@
           class="search-bar-input"
           placeholder="Search..."
           v-model="searchTerm"
-          @keyup="showSearchTermResults"
+          @keyup="showSearchTermResults()"
         />
         <template v-for="category in menu">
           <div
