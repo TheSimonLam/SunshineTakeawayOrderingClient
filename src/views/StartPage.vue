@@ -41,6 +41,5 @@ export default {
   background: $white;
   color: $black;
   border: 2px solid $black;
-  width: 100px;
 }
 </style>
