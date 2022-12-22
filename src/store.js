@@ -19,15 +19,7 @@ function initSideOrders() {
 
 export default new Vuex.Store({
   state: {
-    menu: menu.sort(function(a, b) {
-      if (a.name < b.name) {
-        return -1;
-      }
-      if (a.name > b.name) {
-        return 1;
-      }
-      return 0;
-    }),
+    menu,
     order: [],
     totalPrice: 0,
     mealSides: initSideOrders(),

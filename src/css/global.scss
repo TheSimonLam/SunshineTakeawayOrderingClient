@@ -16,3 +16,7 @@ $porkColor: #fbc9d9;
 $siuColor: #f83737;
 $kingPrawnColor: #ee3cd1;
 $prawnColor: #db62a9;
+
+button {
+    touch-action: manipulation;
+}

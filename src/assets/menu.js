@@ -28,21 +28,6 @@ export default [
       },
       {
         id: "",
-        name: "Peas",
-        price: 1.7,
-      },
-      {
-        id: "",
-        name: "Gravy",
-        price: 1.7,
-      },
-      {
-        id: "",
-        name: "Curry",
-        price: 1.7,
-      },
-      {
-        id: "",
         name: "Pie",
         price: 1.6,
       },
@@ -133,6 +118,41 @@ export default [
     ],
   },
   {
+    name: "Sauces",
+    items: [
+      {
+        id: "",
+        name: "Peas",
+        price: 1.7,
+      },
+      {
+        id: "",
+        name: "Gravy",
+        price: 1.7,
+      },
+      {
+        id: "",
+        name: "Curry",
+        price: 1.7,
+      },
+      {
+        id: "",
+        name: "Barbecue",
+        price: 2.5,
+      },
+      {
+        id: "",
+        name: "Sweet & Sour",
+        price: 1.7,
+      },
+      {
+        id: "",
+        name: "Tomato",
+        price: 0.1,
+      },
+    ],
+  },
+  {
     name: "Starters, Sides & Extras",
     items: [
       {
@@ -216,21 +236,6 @@ export default [
         price: 3.0,
       },
       {
-        id: 314,
-        name: "Barbecue Sauce",
-        price: 2.5,
-      },
-      {
-        id: 315,
-        name: "Curry Sauce",
-        price: 1.7,
-      },
-      {
-        id: 316,
-        name: "Sweet & Sour Sauce",
-        price: 1.7,
-      },
-      {
         id: 317,
         name: "Portion of Mushrooms",
         price: 2.7,
@@ -264,6 +269,282 @@ export default [
         id: "",
         name: "Noodles",
         price: 4.5,
+      },
+    ],
+  },
+  {
+    description: "Popular cooked in soy sauce and served with rice or chips",
+    name: "Bamboo Shoots",
+    sideIncluded: true,
+    items: [
+      {
+        id: 41,
+        name: "Beef with Bamboo Shoots & Waterchestnuts",
+        price: 8.4,
+        sideIncluded: true,
+      },
+      {
+        id: 42,
+        name: "Chicken with Bamboo Shoots & Waterchestnuts",
+        price: 8.2,
+        sideIncluded: true,
+      },
+      {
+        id: 43,
+        name: "Pork with Bamboo Shoots & Waterchestnuts",
+        price: 8.2,
+        sideIncluded: true,
+      },
+      {
+        id: 44,
+        name: "Char Siu with Bamboo Shoots & Waterchestnuts",
+        price: 8.3,
+        sideIncluded: true,
+      },
+      {
+        id: 46,
+        name: "King Prawn with Bamboo Shoots & Waterchestnuts",
+        price: 8.7,
+        sideIncluded: true,
+      },
+    ],
+  },
+  {
+    description:
+      "Onions & green peppers cooked in tasty red sweet & tangy Cantonese sauce. Includes Rice or Chips",
+    name: "Cantonese Sauce",
+    items: [
+      {
+        id: 150,
+        name: "Cantonese Sauce Special",
+        price: 8.7,
+        sideIncluded: true,
+      },
+      {
+        id: 151,
+        name: "Beef in Cantonese Sauce",
+        price: 8.4,
+        sideIncluded: true,
+      },
+      {
+        id: 152,
+        name: "Chicken in Cantonese Sauce",
+        price: 8.2,
+        sideIncluded: true,
+      },
+      {
+        id: 154,
+        name: "Char Siu in Cantonese Sauce",
+        price: 8.3,
+        sideIncluded: true,
+      },
+      {
+        id: 156,
+        name: "King Prawn in Cantonese Sauce",
+        price: 8.7,
+        sideIncluded: true,
+      },
+    ],
+  },
+  {
+    description: "Popular cooked in soy sauce and served with rice or chips",
+    name: "Cashew Nuts",
+    items: [
+      {
+        id: 52,
+        name: "Chicken & Cashew Nuts",
+        price: 8.6,
+        sideIncluded: true,
+      },
+      {
+        id: 56,
+        name: "King Prawns & Cashew Nuts",
+        price: 9.0,
+        sideIncluded: true,
+      },
+    ],
+  },
+  {
+    description:
+      "Red hot & spicy, green peppers, chilli peppers, onions & plenty of chilli sauce. Includes Rice or Chips",
+    name: "Chilli Sauce",
+    items: [
+      {
+        id: 170,
+        name: "Chilli Sauce Special",
+        price: 8.8,
+        hot: true,
+        sideIncluded: true,
+      },
+      {
+        id: 171,
+        name: "Beef in Chilli Sauce",
+        price: 8.5,
+        hot: true,
+        sideIncluded: true,
+      },
+      {
+        id: 172,
+        name: "Chicken in Chilli Sauce",
+        price: 8.3,
+        hot: true,
+        sideIncluded: true,
+      },
+      {
+        id: 173,
+        name: "Pork in Chilli Sauce",
+        price: 8.3,
+        hot: true,
+        sideIncluded: true,
+      },
+      {
+        id: 174,
+        name: "Char Siu in Chilli Sauce",
+        price: 8.4,
+        hot: true,
+        sideIncluded: true,
+      },
+      {
+        id: 176,
+        name: "King Prawn in Chilli Sauce",
+        price: 8.8,
+        hot: true,
+        sideIncluded: true,
+      },
+    ],
+  },
+  {
+    description: "Popular cooked in soy sauce and served with rice or chips",
+    name: "Chinese Mushrooms",
+    items: [
+      {
+        id: 191,
+        name: "Beef with Chinese Mushrooms",
+        price: 8.4,
+        sideIncluded: true,
+      },
+      {
+        id: 192,
+        name: "Chicken with Chinese Mushrooms",
+        price: 8.2,
+        sideIncluded: true,
+      },
+      {
+        id: 196,
+        name: "King Prawn with Chinese Mushrooms",
+        price: 8.7,
+        sideIncluded: true,
+      },
+    ],
+  },
+  {
+    description:
+      "A succulent mix of vegetables including beansprouts, mushrooms and bamboo shoots & waterchestnuts cooked in the meat of your choice, includes rice or chips",
+    name: "Chop Suey",
+    items: [
+      {
+        id: 60,
+        name: "Special Chop Suey",
+        price: 8.7,
+        sideIncluded: true,
+      },
+      {
+        id: 61,
+        name: "Beef Chop Suey",
+        price: 8.4,
+        sideIncluded: true,
+      },
+      {
+        id: 62,
+        name: "Chicken Chop Suey",
+        price: 8.2,
+        sideIncluded: true,
+      },
+      {
+        id: 63,
+        name: "Pork Chop Suey",
+        price: 8.2,
+        sideIncluded: true,
+      },
+      {
+        id: 64,
+        name: "Char Siu Chop Suey",
+        price: 8.3,
+        sideIncluded: true,
+      },
+      {
+        id: 65,
+        name: "Prawn Chop Suey",
+        price: 8.2,
+        sideIncluded: true,
+      },
+      {
+        id: 66,
+        name: "King Prawn Chop Suey",
+        price: 8.7,
+        sideIncluded: true,
+      },
+    ],
+  },
+  {
+    description:
+      "Mixed vegetables & noodles lightly peppered & flavoured with soy sauce. Traditionally wok cooked with your choice of meat. Rice or chips not included & not necessary",
+    name: "Chow Mein",
+    items: [
+      {
+        id: 110,
+        name: "Special Chow Mein",
+        price: 8.3,
+        sideIncluded: false,
+      },
+      {
+        id: 111,
+        name: "Beef Chow Mein",
+        price: 8.2,
+        sideIncluded: false,
+      },
+      {
+        id: 112,
+        name: "Chicken Chow Mein",
+        price: 8.0,
+        sideIncluded: false,
+      },
+      {
+        id: 113,
+        name: "Pork Chow Mein",
+        price: 8.0,
+        sideIncluded: false,
+      },
+      {
+        id: 114,
+        name: "Char Siu Chow Mein",
+        price: 8.1,
+        sideIncluded: false,
+      },
+      {
+        id: 115,
+        name: "Prawn Chow Mein",
+        price: 8.0,
+        sideIncluded: false,
+      },
+      {
+        id: 116,
+        name: "King Prawn Chow Mein",
+        price: 8.5,
+        sideIncluded: false,
+      },
+      {
+        id: 117,
+        name: "Curried Beef Chow Mein",
+        price: 8.5,
+        sideIncluded: false,
+      },
+      {
+        id: 119,
+        name: "Singapore Chow Mein",
+        price: 8.3,
+        hot: true,
+        sideIncluded: false,
       },
     ],
   },
@@ -312,6 +593,247 @@ export default [
         id: 16,
         name: "King Prawn Curry",
         price: 8.7,
+        sideIncluded: true,
+      },
+    ],
+  },
+  {
+    description:
+      "Includes Chips & Peas. Onions & Gravy included where appropriate",
+    name: "English",
+    items: [
+      {
+        id: 221,
+        name: "Mixed Grill",
+        price: 9.0,
+      },
+      {
+        id: 222,
+        name: "Liver & Onions",
+        price: 8.0,
+      },
+      {
+        id: 223,
+        name: "Liver, Bacon & Onions",
+        price: 8.0,
+      },
+      {
+        id: 242,
+        name: "Chicken Omelette",
+        price: 8.2,
+      },
+      {
+        id: 243,
+        name: "Ham Omelette",
+        price: 8.2,
+      },
+      {
+        id: 245,
+        name: "Prawn Omelette",
+        price: 8.2,
+      },
+      {
+        id: 246,
+        name: "King Prawn Omelette",
+        price: 8.7,
+      },
+      {
+        id: 247,
+        name: "Spanish Omelette",
+        price: 8.5,
+      },
+      {
+        id: 248,
+        name: "Mushroom Omelette",
+        price: 7.8,
+      },
+      {
+        id: 249,
+        name: "Cheese & Onion Omelette",
+        price: 7.8,
+      },
+    ],
+  },
+  {
+    description:
+      "A light, quick, fried egg dish served with a choice of rice or chips",
+    name: "Foo Yung",
+    items: [
+      {
+        id: 70,
+        name: "Special Foo Yung",
+        price: 8.7,
+        sideIncluded: true,
+      },
+      {
+        id: 72,
+        name: "Chicken Foo Yung",
+        price: 8.2,
+        sideIncluded: true,
+      },
+      {
+        id: 74,
+        name: "Char Siu Foo Yung",
+        price: 8.3,
+        sideIncluded: true,
+      },
+      {
+        id: 75,
+        name: "Prawn Foo Yung",
+        price: 8.2,
+        sideIncluded: true,
+      },
+      {
+        id: 76,
+        name: "King Prawn Foo Yung",
+        price: 8.7,
+        sideIncluded: true,
+      },
+    ],
+  },
+  {
+    description:
+      "A choice of egg friend rice are available. Rice or chips not included & not necessary",
+    name: "Fried Rice",
+    items: [
+      {
+        id: 100,
+        name: "Special Fried Rice",
+        price: 8.3,
+        sideIncluded: false,
+      },
+      {
+        id: 102,
+        name: "Chicken Fried Rice",
+        price: 7.8,
+        sideIncluded: false,
+      },
+      {
+        id: 104,
+        name: "Char Siu Fried Rice",
+        price: 7.9,
+        sideIncluded: false,
+      },
+      {
+        id: 105,
+        name: "Prawn Chop Fried Rice",
+        price: 7.8,
+        sideIncluded: false,
+      },
+      {
+        id: 106,
+        name: "King Prawn Fried Rice",
+        price: 8.3,
+        sideIncluded: false,
+      },
+      {
+        id: 107,
+        name: "Yung Chow Fried Rice",
+        price: 8.1,
+        sideIncluded: false,
+      },
+      {
+        id: 108,
+        name: "Ham Fried Rice",
+        price: 7.8,
+        sideIncluded: false,
+      },
+      {
+        id: 109,
+        name: "Singapore Fried Rice",
+        price: 8.1,
+        hot: true,
+        sideIncluded: false,
+      },
+    ],
+  },
+  {
+    description:
+      "A mild white garlic sauce dish with mushrooms & onions. Includes Rice or Chips",
+    name: "Garlic Sauce",
+    items: [
+      {
+        id: 160,
+        name: "Garlic Sauce Special",
+        price: 8.8,
+        sideIncluded: true,
+      },
+      {
+        id: 162,
+        name: "Chicken in Garlic Sauce",
+        price: 8.3,
+        sideIncluded: true,
+      },
+      {
+        id: 166,
+        name: "King Prawn in Garlic Sauce",
+        price: 8.8,
+        sideIncluded: true,
+      },
+    ],
+  },
+  {
+    description: "Popular cooked in soy sauce and served with rice or chips",
+    name: "Green Peppers",
+    items: [
+      {
+        id: 121,
+        name: "Beef with Green Peppers & Black Bean Sauce",
+        price: 8.4,
+        sideIncluded: true,
+      },
+      {
+        id: 122,
+        name: "Chicken with Green Peppers & Black Bean Sauce",
+        price: 8.2,
+        sideIncluded: true,
+      },
+      {
+        id: 126,
+        name: "King Prawn with Green Peppers & Black Bean Sauce",
+        price: 8.7,
+        sideIncluded: true,
+      },
+    ],
+  },
+  {
+    description:
+      "A spicy hot & sweet traditional Kung Po dish served with Rice or Chips",
+    name: "Kung Po",
+    items: [
+      {
+        id: 140,
+        name: "Special Kung Po",
+        price: 8.8,
+        hot: true,
+        sideIncluded: true,
+      },
+      {
+        id: 141,
+        name: "Beef Kung Po",
+        price: 8.5,
+        hot: true,
+        sideIncluded: true,
+      },
+      {
+        id: 142,
+        name: "Chicken Kung Po",
+        price: 8.3,
+        hot: true,
+        sideIncluded: true,
+      },
+      {
+        id: 144,
+        name: "Char Siu Kung Po",
+        price: 8.4,
+        hot: true,
+        sideIncluded: true,
+      },
+      {
+        id: 146,
+        name: "King Prawn Kung Po",
+        price: 8.8,
+        hot: true,
         sideIncluded: true,
       },
     ],
@@ -395,220 +917,32 @@ export default [
     ],
   },
   {
-    description: "Popular cooked in soy sauce and served with rice or chips",
-    name: "Bamboo Shoots",
-    sideIncluded: true,
-    items: [
-      {
-        id: 41,
-        name: "Beef with Bamboo Shoots & Waterchestnuts",
-        price: 8.4,
-        sideIncluded: true,
-      },
-      {
-        id: 42,
-        name: "Chicken with Bamboo Shoots & Waterchestnuts",
-        price: 8.2,
-        sideIncluded: true,
-      },
-      {
-        id: 43,
-        name: "Pork with Bamboo Shoots & Waterchestnuts",
-        price: 8.2,
-        sideIncluded: true,
-      },
-      {
-        id: 44,
-        name: "Char Siu with Bamboo Shoots & Waterchestnuts",
-        price: 8.3,
-        sideIncluded: true,
-      },
-      {
-        id: 46,
-        name: "King Prawn with Bamboo Shoots & Waterchestnuts",
-        price: 8.7,
-        sideIncluded: true,
-      },
-    ],
-  },
-  {
-    description: "Popular cooked in soy sauce and served with rice or chips",
-    name: "Cashew Nuts",
-    items: [
-      {
-        id: 52,
-        name: "Chicken & Cashew Nuts",
-        price: 8.6,
-        sideIncluded: true,
-      },
-      {
-        id: 56,
-        name: "King Prawns & Cashew Nuts",
-        price: 9.0,
-        sideIncluded: true,
-      },
-    ],
-  },
-  {
-    description: "Popular cooked in soy sauce and served with rice or chips",
-    name: "Tomato",
-    items: [
-      {
-        id: 91,
-        name: "Beef & Tomato",
-        price: 8.4,
-        sideIncluded: true,
-      },
-      {
-        id: 92,
-        name: "Chicken & Tomato",
-        price: 8.2,
-        sideIncluded: true,
-      },
-      {
-        id: 94,
-        name: "Char Siu & Tomato",
-        price: 8.3,
-        sideIncluded: true,
-      },
-      {
-        id: 96,
-        name: "King Prawn & Tomato",
-        price: 8.7,
-        sideIncluded: true,
-      },
-    ],
-  },
-  {
-    description: "Popular cooked in soy sauce and served with rice or chips",
-    name: "Green Peppers",
-    items: [
-      {
-        id: 121,
-        name: "Beef with Green Peppers & Black Bean Sauce",
-        price: 8.4,
-        sideIncluded: true,
-      },
-      {
-        id: 122,
-        name: "Chicken with Green Peppers & Black Bean Sauce",
-        price: 8.2,
-        sideIncluded: true,
-      },
-      {
-        id: 126,
-        name: "King Prawn with Green Peppers & Black Bean Sauce",
-        price: 8.7,
-        sideIncluded: true,
-      },
-    ],
-  },
-  {
-    description: "Popular cooked in soy sauce and served with rice or chips",
-    name: "Chinese Mushrooms",
-    items: [
-      {
-        id: 191,
-        name: "Beef with Chinese Mushrooms",
-        price: 8.4,
-        sideIncluded: true,
-      },
-      {
-        id: 192,
-        name: "Chicken with Chinese Mushrooms",
-        price: 8.2,
-        sideIncluded: true,
-      },
-      {
-        id: 196,
-        name: "King Prawn with Chinese Mushrooms",
-        price: 8.7,
-        sideIncluded: true,
-      },
-    ],
-  },
-  {
     description:
-      "A succulent mix of vegetables including beansprouts, mushrooms and bamboo shoots & waterchestnuts cooked in the meat of your choice, includes rice or chips",
-    name: "Chop Suey",
+      "A slightly spicy peanut based satay sauce over green peppers, onions & sliced cucumber. Includes Rice or Chips",
+    name: "Satay",
     items: [
       {
-        id: 60,
-        name: "Special Chop Suey",
-        price: 8.7,
+        id: 130,
+        name: "Special Satay",
+        price: 8.8,
         sideIncluded: true,
       },
       {
-        id: 61,
-        name: "Beef Chop Suey",
-        price: 8.4,
+        id: 131,
+        name: "Beef Satay",
+        price: 8.5,
         sideIncluded: true,
       },
       {
-        id: 62,
-        name: "Chicken Chop Suey",
-        price: 8.2,
-        sideIncluded: true,
-      },
-      {
-        id: 63,
-        name: "Pork Chop Suey",
-        price: 8.2,
-        sideIncluded: true,
-      },
-      {
-        id: 64,
-        name: "Char Siu Chop Suey",
+        id: 132,
+        name: "Chicken Satay",
         price: 8.3,
         sideIncluded: true,
       },
       {
-        id: 65,
-        name: "Prawn Chop Suey",
-        price: 8.2,
-        sideIncluded: true,
-      },
-      {
-        id: 66,
-        name: "King Prawn Chop Suey",
-        price: 8.7,
-        sideIncluded: true,
-      },
-    ],
-  },
-  {
-    description:
-      "A light, quick, fried egg dish served with a choice of rice or chips",
-    name: "Foo Yung",
-    items: [
-      {
-        id: 70,
-        name: "Special Foo Yung",
-        price: 8.7,
-        sideIncluded: true,
-      },
-      {
-        id: 72,
-        name: "Chicken Foo Yung",
-        price: 8.2,
-        sideIncluded: true,
-      },
-      {
-        id: 74,
-        name: "Char Siu Foo Yung",
-        price: 8.3,
-        sideIncluded: true,
-      },
-      {
-        id: 75,
-        name: "Prawn Foo Yung",
-        price: 8.2,
-        sideIncluded: true,
-      },
-      {
-        id: 76,
-        name: "King Prawn Foo Yung",
-        price: 8.7,
+        id: 136,
+        name: "King Prawn Satay",
+        price: 8.8,
         sideIncluded: true,
       },
     ],
@@ -651,308 +985,6 @@ export default [
     ],
   },
   {
-    description:
-      "A choice of egg friend rice are available. Rice or chips not included & not necessary",
-    name: "Fried Rice",
-    items: [
-      {
-        id: 100,
-        name: "Special Fried Rice",
-        price: 8.3,
-        sideIncluded: false,
-      },
-      {
-        id: 102,
-        name: "Chicken Fried Rice",
-        price: 7.8,
-        sideIncluded: false,
-      },
-      {
-        id: 104,
-        name: "Char Siu Fried Rice",
-        price: 7.9,
-        sideIncluded: false,
-      },
-      {
-        id: 105,
-        name: "Prawn Chop Fried Rice",
-        price: 7.8,
-        sideIncluded: false,
-      },
-      {
-        id: 106,
-        name: "King Prawn Fried Rice",
-        price: 8.3,
-        sideIncluded: false,
-      },
-      {
-        id: 107,
-        name: "Yung Chow Fried Rice",
-        price: 8.1,
-        sideIncluded: false,
-      },
-      {
-        id: 108,
-        name: "Ham Fried Rice",
-        price: 7.8,
-        sideIncluded: false,
-      },
-      {
-        id: 109,
-        name: "Singapore Fried Rice",
-        price: 8.1,
-        hot: true,
-        sideIncluded: false,
-      },
-    ],
-  },
-  {
-    description:
-      "Mixed vegetables & noodles lightly peppered & flavoured with soy sauce. Traditionally wok cooked with your choice of meat. Rice or chips not included & not necessary",
-    name: "Chow Mein",
-    items: [
-      {
-        id: 110,
-        name: "Special Chow Mein",
-        price: 8.3,
-        sideIncluded: false,
-      },
-      {
-        id: 111,
-        name: "Beef Chow Mein",
-        price: 8.2,
-        sideIncluded: false,
-      },
-      {
-        id: 112,
-        name: "Chicken Chow Mein",
-        price: 8.0,
-        sideIncluded: false,
-      },
-      {
-        id: 113,
-        name: "Pork Chow Mein",
-        price: 8.0,
-        sideIncluded: false,
-      },
-      {
-        id: 114,
-        name: "Char Siu Chow Mein",
-        price: 8.1,
-        sideIncluded: false,
-      },
-      {
-        id: 115,
-        name: "Prawn Chow Mein",
-        price: 8.0,
-        sideIncluded: false,
-      },
-      {
-        id: 116,
-        name: "King Prawn Chow Mein",
-        price: 8.5,
-        sideIncluded: false,
-      },
-      {
-        id: 117,
-        name: "Curried Beef Chow Mein",
-        price: 8.5,
-        sideIncluded: false,
-      },
-      {
-        id: 119,
-        name: "Singapore Chow Mein",
-        price: 8.3,
-        hot: true,
-        sideIncluded: false,
-      },
-    ],
-  },
-  {
-    description:
-      "A slightly spicy peanut based satay sauce over green peppers, onions & sliced cucumber. Includes Rice or Chips",
-    name: "Satay",
-    items: [
-      {
-        id: 130,
-        name: "Special Satay",
-        price: 8.8,
-        sideIncluded: true,
-      },
-      {
-        id: 131,
-        name: "Beef Satay",
-        price: 8.5,
-        sideIncluded: true,
-      },
-      {
-        id: 132,
-        name: "Chicken Satay",
-        price: 8.3,
-        sideIncluded: true,
-      },
-      {
-        id: 136,
-        name: "King Prawn Satay",
-        price: 8.8,
-        sideIncluded: true,
-      },
-    ],
-  },
-  {
-    description:
-      "A spicy hot & sweet traditional Kung Po dish served with Rice or Chips",
-    name: "Kung Po",
-    items: [
-      {
-        id: 140,
-        name: "Special Kung Po",
-        price: 8.8,
-        hot: true,
-        sideIncluded: true,
-      },
-      {
-        id: 141,
-        name: "Beef Kung Po",
-        price: 8.5,
-        hot: true,
-        sideIncluded: true,
-      },
-      {
-        id: 142,
-        name: "Chicken Kung Po",
-        price: 8.3,
-        hot: true,
-        sideIncluded: true,
-      },
-      {
-        id: 144,
-        name: "Char Siu Kung Po",
-        price: 8.4,
-        hot: true,
-        sideIncluded: true,
-      },
-      {
-        id: 146,
-        name: "King Prawn Kung Po",
-        price: 8.8,
-        hot: true,
-        sideIncluded: true,
-      },
-    ],
-  },
-  {
-    description:
-      "Onions & green peppers cooked in tasty red sweet & tangy Cantonese sauce. Includes Rice or Chips",
-    name: "Cantonese Sauce",
-    items: [
-      {
-        id: 150,
-        name: "Cantonese Sauce Special",
-        price: 8.7,
-        sideIncluded: true,
-      },
-      {
-        id: 151,
-        name: "Beef in Cantonese Sauce",
-        price: 8.4,
-        sideIncluded: true,
-      },
-      {
-        id: 152,
-        name: "Chicken in Cantonese Sauce",
-        price: 8.2,
-        sideIncluded: true,
-      },
-      {
-        id: 154,
-        name: "Char Siu in Cantonese Sauce",
-        price: 8.3,
-        sideIncluded: true,
-      },
-      {
-        id: 156,
-        name: "King Prawn in Cantonese Sauce",
-        price: 8.7,
-        sideIncluded: true,
-      },
-    ],
-  },
-  {
-    description:
-      "A mild white garlic sauce dish with mushrooms & onions. Includes Rice or Chips",
-    name: "Garlic Sauce",
-    items: [
-      {
-        id: 160,
-        name: "Garlic Sauce Special",
-        price: 8.8,
-        sideIncluded: true,
-      },
-      {
-        id: 162,
-        name: "Chicken in Garlic Sauce",
-        price: 8.3,
-        sideIncluded: true,
-      },
-      {
-        id: 166,
-        name: "King Prawn in Garlic Sauce",
-        price: 8.8,
-        sideIncluded: true,
-      },
-    ],
-  },
-  {
-    description:
-      "Red hot & spicy, green peppers, chilli peppers, onions & plenty of chilli sauce. Includes Rice or Chips",
-    name: "Chilli Sauce",
-    items: [
-      {
-        id: 170,
-        name: "Chilli Sauce Special",
-        price: 8.8,
-        hot: true,
-        sideIncluded: true,
-      },
-      {
-        id: 171,
-        name: "Beef in Chilli Sauce",
-        price: 8.5,
-        hot: true,
-        sideIncluded: true,
-      },
-      {
-        id: 172,
-        name: "Chicken in Chilli Sauce",
-        price: 8.3,
-        hot: true,
-        sideIncluded: true,
-      },
-      {
-        id: 173,
-        name: "Pork in Chilli Sauce",
-        price: 8.3,
-        hot: true,
-        sideIncluded: true,
-      },
-      {
-        id: 174,
-        name: "Char Siu in Chilli Sauce",
-        price: 8.4,
-        hot: true,
-        sideIncluded: true,
-      },
-      {
-        id: 176,
-        name: "King Prawn in Chilli Sauce",
-        price: 8.8,
-        hot: true,
-        sideIncluded: true,
-      },
-    ],
-  },
-  {
     description: "Tangy, Tasty & Slightly spicy. Includes Rice or Chips",
     name: "Szechuan",
     items: [
@@ -975,6 +1007,36 @@ export default [
         name: "Chicken in Szechuan Sauce",
         price: 8.3,
         hot: true,
+        sideIncluded: true,
+      },
+    ],
+  },
+  {
+    description: "Popular cooked in soy sauce and served with rice or chips",
+    name: "Tomato",
+    items: [
+      {
+        id: 91,
+        name: "Beef & Tomato",
+        price: 8.4,
+        sideIncluded: true,
+      },
+      {
+        id: 92,
+        name: "Chicken & Tomato",
+        price: 8.2,
+        sideIncluded: true,
+      },
+      {
+        id: 94,
+        name: "Char Siu & Tomato",
+        price: 8.3,
+        sideIncluded: true,
+      },
+      {
+        id: 96,
+        name: "King Prawn & Tomato",
+        price: 8.7,
         sideIncluded: true,
       },
     ],
@@ -1041,63 +1103,6 @@ export default [
         hot: true,
         vegetarian: true,
         sideIncluded: true,
-      },
-    ],
-  },
-  {
-    description:
-      "Includes Chips & Peas. Onions & Gravy included where appropriate",
-    name: "English",
-    items: [
-      {
-        id: 221,
-        name: "Mixed Grill",
-        price: 9.0,
-      },
-      {
-        id: 222,
-        name: "Liver & Onions",
-        price: 8.0,
-      },
-      {
-        id: 223,
-        name: "Liver, Bacon & Onions",
-        price: 8.0,
-      },
-      {
-        id: 242,
-        name: "Chicken Omelette",
-        price: 8.2,
-      },
-      {
-        id: 243,
-        name: "Ham Omelette",
-        price: 8.2,
-      },
-      {
-        id: 245,
-        name: "Prawn Omelette",
-        price: 8.2,
-      },
-      {
-        id: 246,
-        name: "King Prawn Omelette",
-        price: 8.7,
-      },
-      {
-        id: 247,
-        name: "Spanish Omelette",
-        price: 8.5,
-      },
-      {
-        id: 248,
-        name: "Mushroom Omelette",
-        price: 7.8,
-      },
-      {
-        id: 249,
-        name: "Cheese & Onion Omelette",
-        price: 7.8,
       },
     ],
   },
