@@ -145,11 +145,6 @@ export default [
         name: "Sweet & Sour",
         price: 1.7,
       },
-      {
-        id: "",
-        name: "Tomato",
-        price: 0.1,
-      },
     ],
   },
   {
