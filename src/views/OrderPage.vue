@@ -101,9 +101,22 @@ export default {
     getSelectedCategory() {
       if (this.selectedCategoryName === "") return {};
       const menu = this.$store.getters.getMenu;
-      return menu.filter(
+      const filteredMenuCategory = menu.filter(
         (categoryItem) => categoryItem.name === this.selectedCategoryName
       )[0].items;
+      const sortedFilteredMenuCategory = filteredMenuCategory.sort(function(
+        a,
+        b
+      ) {
+        if (a.name < b.name) {
+          return -1;
+        }
+        if (a.name > b.name) {
+          return 1;
+        }
+        return 0;
+      });
+      return sortedFilteredMenuCategory
     },
   },
   data() {
