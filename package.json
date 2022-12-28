@@ -15,7 +15,7 @@
     "escpos": "^3.0.0-alpha.3",
     "escpos-network": "^3.0.0-alpha.5",
     "escpos-usb": "^3.0.0-alpha.2",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "uuidv4": "^5.0.1",
     "vue": "^2.6.10",
     "vue-router": "^3.0.3",
