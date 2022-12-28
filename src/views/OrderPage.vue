@@ -236,7 +236,7 @@ export default {
 }
 
 .categories-list-item {
-  font-size: 1.8em;
+  font-size: 2.3em;
   border-bottom: 1px solid $black;
   padding: 5px;
 }

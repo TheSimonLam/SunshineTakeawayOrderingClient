@@ -85,7 +85,7 @@ export default {
 .keypad-button {
   width: 100%;
   height: 70px;
-  font-size: 1em;
+  font-size: 2em;
   font-weight: bold;
   border: 1px solid $red;
   background: $white;
