@@ -44,7 +44,18 @@
       <div class="overlay-background" @click="toggleEditOverlay"></div>
       <div class="overlay-wrapper">
         <div>Editing</div>
-        <input class="edit-item-input" v-model="itemEditValue" />
+        <span>Note</span>
+        <input
+          placeholder="Enter note"
+          class="edit-item-input"
+          v-model="itemEditNoteValue"
+        />
+        <span>Price</span>
+        <input
+          placeholder="Enter price"
+          class="edit-item-input"
+          v-model="itemEditPriceValue"
+        />
         <div class="overlay-buttons-container">
           <button class="overlay-button overlay-button-yes" @click="saveEdit()">
             Save
@@ -165,7 +176,8 @@ export default {
       arrivalTime: "",
       itemToBeDeleted: undefined,
       itemIndexToBeEdited: undefined,
-      itemEditValue: "",
+      itemEditNoteValue: "",
+      itemEditPriceValue: "",
       showSummaryNav: true,
     };
   },
@@ -218,7 +230,9 @@ export default {
     },
     toggleEditOverlay(itemIndexToBeEdited) {
       this.itemIndexToBeEdited = itemIndexToBeEdited;
-      this.itemEditValue = "";
+      this.itemEditNoteValue = "";
+      this.itemEditPriceValue =
+        this.order[this.itemIndexToBeEdited]?.price || 0;
       this.showEditOverlay = !this.showEditOverlay;
       this.toggleSummaryNav();
     },
@@ -231,9 +245,15 @@ export default {
       this.showSummaryNav = !this.showSummaryNav;
     },
     saveEdit() {
+      if (!this.itemEditPriceValue) {
+        return;
+      }
       const editedOrder = this.order[this.itemIndexToBeEdited];
       this.removeItem(editedOrder);
-      editedOrder.name += " (NOTE: " + this.itemEditValue + ")";
+      if (this.itemEditNoteValue) {
+        editedOrder.name += " (NOTE: " + this.itemEditNoteValue + ")";
+      }
+      editedOrder.price = parseFloat(this.itemEditPriceValue);
       this.$store.commit("addItemToOrder", {
         item: editedOrder,
         indexToInsert: this.itemIndexToBeEdited,

@@ -37,8 +37,8 @@ export default {
   border: 1px solid $black;
   display: inline-block;
   background: #fff;
-  width: 290px;
-  height: 25vh;
+  width: 370px;
+  height: 35vh;
   border-radius: 5px;
   padding: 40px;
   position: absolute;
