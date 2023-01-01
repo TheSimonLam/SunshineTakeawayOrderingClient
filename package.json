@@ -23,11 +23,11 @@
   },
   "devDependencies": {
     "@babel/plugin-proposal-optional-chaining": "^7.20.7",
-    "@vue/cli-plugin-babel": "^3.11.0",
-    "@vue/cli-service": "^3.11.0",
+    "@vue/cli-plugin-babel": "^5.0.8",
+    "@vue/cli-service": "^5.0.8",
     "nodemon": "^2.0.4",
     "sass": "^1.18.0",
-    "sass-loader": "^7.1.0",
+    "sass-loader": "^13.2.0",
     "vue-template-compiler": "^2.6.10"
   },
   "postcss": {
