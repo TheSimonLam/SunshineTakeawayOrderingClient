@@ -47,11 +47,11 @@ export default {
   },
   methods: {
     addToOrder() {
-      if (this.itemDesc !== "" && !isNaN(parseFloat(this.itemPrice))) {
+      if (this.itemDesc !== "") {
         this.$store.commit("addItemToOrder", {
           item: {
             id: "",
-            price: parseFloat(this.itemPrice),
+            price: parseFloat(this.itemPrice || "0"),
             name: this.itemDesc,
           },
         });
@@ -69,6 +69,8 @@ export default {
 
 .custom-item-input {
   padding: 10px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .custom-item-overlay-container {
