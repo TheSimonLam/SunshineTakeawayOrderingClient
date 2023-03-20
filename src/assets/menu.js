@@ -28,11 +28,6 @@ export default [
       },
       {
         id: "",
-        name: "Pie",
-        price: 1.6,
-      },
-      {
-        id: "",
         name: "Small Sausage",
         price: 1.6,
         saltAndVinegar: true,
