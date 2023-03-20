@@ -57,6 +57,12 @@ export default [
       },
       {
         id: "",
+        name: "Battered Small Sausage",
+        price: 1.7,
+        saltAndVinegar: true,
+      },
+      {
+        id: "",
         name: "Potato Scallop",
         price: 0.7,
         saltAndVinegar: true,
@@ -73,7 +79,7 @@ export default [
         price: 1.7,
         saltAndVinegar: true,
       },
-      { id: "", name: "Vegetable Spring Roll (2)", price: 3.8 },
+      { id: "", name: "Vegetable Spring Roll (2)", price: 4.0 },
       {
         id: "",
         name: "Mini Spring Rolls (5) with sweet & sour sauce",
@@ -115,6 +121,12 @@ export default [
         price: 4.8,
         saltAndVinegar: true,
       },
+      {
+        id: "",
+        name: "Chicken Nuggets",
+        price: 3.3,
+        saltAndVinegar: false,
+      },
     ],
   },
   {
@@ -122,28 +134,53 @@ export default [
     items: [
       {
         id: "",
-        name: "Peas",
+        name: "Large Peas",
         price: 1.7,
       },
       {
         id: "",
-        name: "Gravy",
+        name: "Large Gravy",
         price: 1.7,
       },
       {
         id: "",
-        name: "Curry",
+        name: "Large Curry",
         price: 1.7,
       },
       {
         id: "",
-        name: "Barbecue",
-        price: 2.5,
+        name: "Small BBQ sauce",
+        price: 1.9,
       },
       {
         id: "",
-        name: "Sweet & Sour",
+        name: "Large Sweet & Sour",
         price: 1.7,
+      },
+      {
+        id: "",
+        name: "Large Beans",
+        price: 2.0,
+      },
+      {
+        id: "",
+        name: "Small Beans",
+        price: 1.3,
+      },
+      {
+        id: "",
+        name: "Small Peas",
+        price: 1.3,
+      },
+      {
+        id: "",
+        name: "Small Gravy",
+        price: 1.3,
+      },
+      {
+        id: "",
+        name: "Small Curry",
+        price: 1.3,
       },
     ],
   },
@@ -459,6 +496,12 @@ export default [
     name: "Chicken",
     sideIncluded: true,
     items: [
+      {
+        id: "",
+        name: "Chicken Balls",
+        price: 4.9,
+        sideIncluded: false,
+      },
       {
         id: 812,
         name: "Shredded Crispy Chicken in Sweet & Sour Sauce",
