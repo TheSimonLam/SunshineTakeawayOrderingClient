@@ -156,7 +156,7 @@ import { printEscPos } from "../api/services";
 import { HOST_IP } from "../consts";
 
 export default {
-  name: "confirm",
+  name: "summary",
   computed: {
     order() {
       return this.$store.getters.getOrder;

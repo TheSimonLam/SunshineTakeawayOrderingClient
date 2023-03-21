@@ -66,7 +66,7 @@
       </div>
       <div
         class="order-page-nav-button next-container"
-        @click="goToConfirmationPage"
+        @click="goToSummaryPage"
       >
         Summary (£{{ totalPrice.toFixed(2) }})
       </div>
@@ -131,8 +131,8 @@ export default {
     };
   },
   methods: {
-    goToConfirmationPage() {
-      this.$router.push({ path: "confirm" });
+    goToSummaryPage() {
+      this.$router.push({ path: "summary" });
     },
     removeLastItemAdded() {
       if (this.orderItemCount > 0) {

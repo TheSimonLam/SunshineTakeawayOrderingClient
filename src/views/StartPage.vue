@@ -2,6 +2,9 @@
   <div class="start-page-container">
     <span class="title">Sunshine Takeaway</span>
     <button class="start-button" @click="goToOrderPage">Start</button>
+    <button class="past-orders-button" @click="goToPastOrders">
+      Past Orders
+    </button>
   </div>
 </template>
 
@@ -11,6 +14,9 @@ export default {
   methods: {
     goToOrderPage() {
       this.$router.push({ path: "order" });
+    },
+    goToPastOrders() {
+      this.$router.push({ path: "past-orders" });
     },
   },
 };
@@ -40,6 +46,15 @@ export default {
   font-size: 2em;
   background: $white;
   color: $black;
+  border: 2px solid $black;
+  margin-bottom: 20px;
+}
+
+.past-orders-button {
+  border-radius: 5px;
+  font-size: 2em;
+  background: $red;
+  color: $white;
   border: 2px solid $black;
 }
 </style>

@@ -19,9 +19,14 @@ export default new Router({
       component: () => import("./views/OrderPage.vue"),
     },
     {
-      path: "/confirm",
-      name: "comfirm",
+      path: "/summary",
+      name: "summary",
       component: () => import("./views/SummaryPage.vue"),
+    },
+    {
+      path: "/past-orders",
+      name: "past-orders",
+      component: () => import("./views/PastOrdersPage.vue"),
     },
   ],
 });
