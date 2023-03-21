@@ -60,7 +60,8 @@ export default new Vuex.Store({
       state.totalPrice = 0;
     },
     setPastOrders(state, pastOrders) {
-      state.pastOrders = pastOrders;
+      const sortedByTimestampPastOrders = pastOrders.sort((a, b) => b.createdTimestamp - a.createdTimestamp)
+      state.pastOrders = sortedByTimestampPastOrders;
     },
   },
   actions: {
