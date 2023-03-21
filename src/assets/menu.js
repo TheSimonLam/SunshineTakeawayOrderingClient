@@ -1011,6 +1011,13 @@ export default [
         sideIncluded: true,
       },
       {
+        id: 201,
+        name: "Mixed Veg Curry",
+        price: 7.8,
+        vegetarian: true,
+        sideIncluded: true,
+      },
+      {
         id: 202,
         name: "Mushroom Curry",
         price: 7.8,
