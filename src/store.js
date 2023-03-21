@@ -1,5 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import { getOrders } from "./api/services";
 import menu from "./assets/menu";
 
 Vue.use(Vuex);
@@ -23,6 +24,7 @@ export default new Vuex.Store({
     order: [],
     totalPrice: 0,
     mealSides: initSideOrders(),
+    pastOrders: [],
   },
   mutations: {
     addItemToOrder(state, { item, indexToInsert = undefined }) {
@@ -57,8 +59,20 @@ export default new Vuex.Store({
       state.order = [];
       state.totalPrice = 0;
     },
+    setPastOrders(state, pastOrders) {
+      state.pastOrders = pastOrders;
+    },
   },
-  actions: {},
+  actions: {
+    async fetchAllPast24HourOrders(context) {
+      const res = await getOrders({
+        fromTimestamp: Date.now() - 86400000, // 24 hours
+        toTimestamp: Date.now(),
+        orderState: "all",
+      });
+      context.commit("setPastOrders", res?.Items);
+    },
+  },
   getters: {
     getMenu: (state) => {
       return state.menu;
@@ -71,6 +85,9 @@ export default new Vuex.Store({
     },
     getMenuMealSides: (state) => {
       return state.mealSides;
+    },
+    getPastOrders: (state) => {
+      return state.pastOrders;
     },
   },
 });

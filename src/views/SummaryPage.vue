@@ -152,7 +152,7 @@
 </template>
 
 <script>
-import { printEscPos } from "../api/services";
+import { createOrder, printEscPos } from "../api/services";
 import { HOST_IP } from "../consts";
 
 export default {
@@ -182,7 +182,14 @@ export default {
     };
   },
   methods: {
-    placeOrder() {
+    async placeOrder() {
+      await createOrder({
+        order: this.order,
+        totalPrice: this.totalPrice,
+        customerName: this.customerName,
+        arrivalTime: this.arrivalTime,
+        createdTimestamp: Date.now(),
+      });
       if (!this.isPrinting) {
         this.printerError = "";
         this.isPrinting = true;
