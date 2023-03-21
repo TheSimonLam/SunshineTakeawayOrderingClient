@@ -69,10 +69,7 @@
           >
             Salt & Vinegar
           </button>
-          <button
-            class="side-overlay-button"
-            @click="saltAndVinegarChosen('')"
-          >
+          <button class="side-overlay-button" @click="saltAndVinegarChosen('')">
             None
           </button>
         </div>
@@ -118,10 +115,17 @@ export default {
       }
     },
     addToOrder(item, e) {
+      const sideIncluded = item.sideIncluded;
+
       if (e) this.fireAddedToBasketMessage(e);
 
       this.currentlySelectedItem = {};
       item.uuid = uuid();
+
+      if (sideIncluded && item.side.name === "No side") {
+        item.price -= 1;
+      }
+
       this.$store.commit("addItemToOrder", { item });
       this.resetSearch("");
     },
@@ -159,7 +163,7 @@ export default {
       this.toggleSideOverlay();
     },
     saltAndVinegarChosen(option) {
-      if(option){
+      if (option) {
         this.currentlySelectedItem.name += " with " + option;
       }
       this.addToOrder(this.currentlySelectedItem);
