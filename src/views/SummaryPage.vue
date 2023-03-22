@@ -148,6 +148,7 @@
         🖨️Print
       </div>
     </div>
+    {{ JSON.stringify(this.$route.params) }}
   </div>
 </template>
 
@@ -166,6 +167,8 @@ export default {
     },
   },
   data() {
+    const pastOrder = this.$route.params;
+    console.log(pastOrder)
     return {
       showResetOverlay: false,
       showDeleteItemOverlay: false,
@@ -229,7 +232,7 @@ export default {
       }
     },
     backToOrderPage() {
-      this.$router.push({ path: "order" });
+      this.$router.push({ name: "order" });
     },
     toggleResetOverlay() {
       this.showResetOverlay = !this.showResetOverlay;
@@ -270,7 +273,7 @@ export default {
     reset() {
       this.toggleResetOverlay();
       this.$store.commit("resetOrder");
-      this.$router.push({ path: "/" });
+      this.$router.push({ name: "start" });
     },
     removeItem(item) {
       this.$store.commit("removeItemFromOrder", item);

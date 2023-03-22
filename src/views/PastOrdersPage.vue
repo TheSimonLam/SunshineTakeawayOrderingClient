@@ -27,11 +27,8 @@ export default {
     },
   },
   methods: {
-    goToSummaryPage() {
-      this.$router.push({ path: "summary" });
-    },
     goBack() {
-      this.$router.push({ path: "/" });
+      this.$router.push({ name: "start" });
     },
   },
 };

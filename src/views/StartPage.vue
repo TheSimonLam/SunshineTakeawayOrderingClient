@@ -13,10 +13,10 @@ export default {
   name: "start",
   methods: {
     goToOrderPage() {
-      this.$router.push({ path: "order" });
+      this.$router.push({ name: "order" });
     },
     goToPastOrders() {
-      this.$router.push({ path: "past-orders" });
+      this.$router.push({ name: "past-orders" });
     },
   },
 };

@@ -24,7 +24,7 @@ export default {
   methods: {
     reset() {
       this.$store.commit("resetOrder");
-      this.$router.push({ path: "/" });
+      this.$router.push({ name: "start" });
     },
   },
 };

@@ -1,5 +1,5 @@
 <template>
-  <div class="past-order-container">
+  <div class="past-order-container" @click="navigateToPastOrder(pastOrder)">
     <p>Created: {{ formatDate(pastOrder.createdTimestamp) }}</p>
     <p>Arrival: {{ pastOrder.arrivalTime }}</p>
     <p>Name: {{ pastOrder.customerName }}</p>
@@ -11,7 +11,9 @@ export default {
   name: "past-order-item",
   props: ["pastOrder"],
   methods: {
-    navigateToPastOrder() {},
+    navigateToPastOrder(pastOrder) {
+      this.$router.push({ name: "summary", params: { pastOrder } });
+    },
     formatDate(timestamp) {
       const date = new Date(timestamp);
       return date.toLocaleTimeString("en-GB");

@@ -132,7 +132,7 @@ export default {
   },
   methods: {
     goToSummaryPage() {
-      this.$router.push({ path: "summary" });
+      this.$router.push({ name: "summary" });
     },
     removeLastItemAdded() {
       if (this.orderItemCount > 0) {
@@ -151,7 +151,7 @@ export default {
     reset() {
       this.toggleResetOverlay();
       this.$store.commit("resetOrder");
-      this.$router.push({ path: "/" });
+      this.$router.push({ name: "start" });
     },
     setCategory(chosenCategory) {
       this.selectedCategoryName = chosenCategory;
