@@ -150,7 +150,7 @@
         @click="placeOrder"
         :class="isPrinting ? 'is-printing' : ''"
       >
-        🖨️Print
+        {{ pastOrder ? "Print" : "Submit & Print" }}
       </div>
     </div>
   </div>
