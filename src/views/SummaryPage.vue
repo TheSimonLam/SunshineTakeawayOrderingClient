@@ -73,8 +73,11 @@
       <div v-if="printerError" class="printer-error-container">
         Printer error: {{ printerError }}
       </div>
-      <div class="item-container" v-for="(item, index) in order">
-        <span class="delete-icon" @click="toggleDeleteItemOverlay(item)"
+      <div class="item-container" v-for="(item, index) in pastOrder || order">
+        <span
+          v-if="!pastOrder"
+          class="delete-icon"
+          @click="toggleDeleteItemOverlay(item)"
           >✖</span
         >
         <div v-if="item.id" class="ordered-item ordered-item-name">
@@ -91,6 +94,7 @@
           £{{ item.price.toFixed(2) }}
         </div>
         <button
+          v-if="!pastOrder"
           class="ordered-item-edit-button"
           @click="toggleEditOverlay(index)"
         >
@@ -101,6 +105,7 @@
       <div class="name-container">
         Name:
         <input
+          :disabled="pastOrder"
           class="customer-name-input"
           placeholder="customer name..."
           v-model="customerName"
@@ -109,12 +114,13 @@
       <div class="time-container">
         Time:
         <input
+          :disabled="pastOrder"
           class="time-input"
           placeholder="arrival time..."
           v-model="arrivalTime"
         />
       </div>
-      <div class="time-buttons-container">
+      <div v-if="!pastOrder" class="time-buttons-container">
         <button class="time-button" @click="timeSelected('Now')">Now</button>
         <button class="time-button" @click="timeSelected('5')">5 mins</button>
         <button class="time-button" @click="timeSelected('10')">10 mins</button>
@@ -129,15 +135,13 @@
     </div>
     <div v-if="showSummaryNav" class="summary-page-nav">
       <div
+        v-if="!pastOrder"
         class="order-page-nav-button reset-container"
         @click="toggleResetOverlay"
       >
         Reset
       </div>
-      <div
-        class="summary-page-nav-button back-container"
-        @click="backToOrderPage"
-      >
+      <div class="summary-page-nav-button back-container" @click="goBack">
         Back
       </div>
       <div
@@ -148,7 +152,6 @@
         🖨️Print
       </div>
     </div>
-    {{ JSON.stringify(this.$route.params) }}
   </div>
 </template>
 
@@ -163,36 +166,42 @@ export default {
       return this.$store.getters.getOrder;
     },
     totalPrice() {
-      return this.$store.getters.getTotalPrice;
+      return (
+        this.$route.params?.pastOrder?.totalPrice ||
+        this.$store.getters.getTotalPrice
+      );
     },
   },
   data() {
-    const pastOrder = this.$route.params;
-    console.log(pastOrder)
+    const pastOrderInfo = this.$route.params?.pastOrder;
     return {
       showResetOverlay: false,
       showDeleteItemOverlay: false,
       showEditOverlay: false,
       isPrinting: false,
       printerError: "",
-      customerName: "",
-      arrivalTime: "",
+      customerName: pastOrderInfo?.customerName || "",
+      arrivalTime: pastOrderInfo?.arrivalTime || "",
       itemToBeDeleted: undefined,
       itemIndexToBeEdited: undefined,
       itemEditNoteValue: "",
       itemEditPriceValue: "",
       showSummaryNav: true,
+      pastOrder: pastOrderInfo?.order,
     };
   },
   methods: {
     async placeOrder() {
-      await createOrder({
-        order: this.order,
-        totalPrice: this.totalPrice,
-        customerName: this.customerName,
-        arrivalTime: this.arrivalTime,
-        createdTimestamp: Date.now(),
-      });
+      if (!this.pastOrder) {
+        await createOrder({
+          order: this.order,
+          totalPrice: this.totalPrice,
+          customerName: this.customerName,
+          arrivalTime: this.arrivalTime,
+          createdTimestamp: Date.now(),
+        });
+      }
+
       if (!this.isPrinting) {
         this.printerError = "";
         this.isPrinting = true;
@@ -231,8 +240,8 @@ export default {
         this.arrivalTime = hours + ":" + formattedMinutes;
       }
     },
-    backToOrderPage() {
-      this.$router.push({ name: "order" });
+    goBack() {
+      this.$router.go(-1);
     },
     toggleResetOverlay() {
       this.showResetOverlay = !this.showResetOverlay;
