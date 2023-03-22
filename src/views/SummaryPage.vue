@@ -92,6 +92,7 @@
         -
         <div class="ordered-item ordered-item-price">
           £{{ item.price.toFixed(2) }}
+          {{ item.side ? `+ £${item.side.price.toFixed(2)}` : "" }}
         </div>
         <button
           v-if="!pastOrder"
